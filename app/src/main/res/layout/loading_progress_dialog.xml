@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:background="#00000000"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="30dp"
+    android:layout_height="wrap_content">
+
+    <ProgressBar
+        android:id="@+id/downloading_progress"
+        android:theme="@style/ProgressStyle"
+        android:layout_width="80dp"
+        android:layout_height="80dp"/>
+
+    <TextView
+        android:id="@+id/loading_label_id"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:text="@string/application_is_upgrading_please_wait"/>
+
+
+</LinearLayout>

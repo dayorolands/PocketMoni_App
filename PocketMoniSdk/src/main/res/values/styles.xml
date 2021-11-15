@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <!-- Customize your theme here. -->
+<!--        <item name="colorPrimary">@color/white</item>-->
+<!--        <item name="colorPrimaryVariant">@color/white</item>-->
+<!--        <item name="colorOnPrimary">@color/pocketmoni_deep_blue</item>-->
+<!--        <item name="android:statusBarColor" tools:targetApi="l">#FFFFFF</item>-->
+<!--        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>-->
+    </style>
+
+    <style name="ProgressStyle">
+        <item name="colorAccent">#7E8B96</item>
+    </style>
+</resources>

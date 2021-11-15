@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".View.Payout.Transfer.Card.CardTransferAmountActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f5f5f5"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:background="#FFFFFF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp">
+                <ImageView
+                    android:padding="5dp"
+                    android:id="@+id/back_btn_id"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/clear_icon"/>
+
+                <TextView
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#333333"
+                    android:textSize="20sp"
+                    android:text="@string/card_transfer"/>
+            </RelativeLayout>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="2dp"
+                android:background="@color/pocketmoni_white_smoke"/>
+        </LinearLayout>
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transfer"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:textSize="25sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transfer Amount:"
+                android:textSize="15sp"/>
+            <EditText
+                android:id="@+id/amt_label"
+                android:paddingLeft="10dp"
+                android:inputType="numberDecimal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_border_edittext"
+                android:hint="₦0.00"
+                android:textStyle="bold"
+                android:textColor="@color/pocketmoni_faint_grey"
+                android:imeOptions="actionDone"
+                android:textSize="22sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/convenient_fee_mandatory"
+                android:textSize="15sp"/>
+            <EditText
+                android:id="@+id/amt_convenient"
+                android:paddingLeft="10dp"
+                android:inputType="numberDecimal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_border_edittext"
+                android:hint="0"
+                android:textStyle="bold"
+                android:textColor="@color/pocketmoni_faint_grey"
+                android:imeOptions="actionDone"
+                android:textSize="22sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_border_edittext"
+            android:layout_margin="20dp">
+            <Spinner
+                android:id="@+id/bank_display"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:entries="@array/banks_list"
+                android:dropDownWidth="match_parent"
+                />
+        </LinearLayout>
+
+
+
+        <EditText
+            android:id="@+id/acct_box"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/custom_border_edittext"
+            android:hint="@string/recipient_account_number"
+            android:imeOptions="actionDone"
+            android:maxLength="10"
+            android:textSize="16sp"
+            android:inputType="number"/>
+
+        <TextView
+            android:visibility="visible"
+            android:id="@+id/acct_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_gravity="right"
+            android:textStyle="bold"
+            android:background="@drawable/custom_border_normal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/pass_green"
+            android:textSize="17sp" />
+
+        <Button
+            android:id="@+id/btn_continue_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="#FFFFFF"
+            android:textAllCaps="false"
+            android:text="@string/continue_label"
+            android:background="@drawable/custom_border_button"/>
+
+    </LinearLayout>
+
+</ScrollView>

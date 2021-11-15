@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.etranzact.pocketmoni">
+
+    <application
+        android:name="Utils.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:sharedUserId="android.uid.system"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".View.Payout.Billpayment.Junks.BillpaymentDashboard" />
+        <activity android:name=".View.WelcomeActivity.WelcomeActivity" />
+        <activity android:name=".View.LoginActivity.ForgotPasswordActivity" />
+        <activity android:name=".View.LoginActivity.VerifyPhoneActivity" />
+        <activity android:name=".View.LoginActivity.CreateAccountActivity" />
+        <activity android:name=".View.LoginActivity.SignInActivity" />
+        <activity android:name=".View.WelcomeActivity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".View.EodActivity.EodActivity" />
+        <activity android:name=".View.SettingsActivity.SettingsActivity" />
+        <activity android:name=".View.SettingsActivity.ConfigurationActivity" />
+        <activity android:name=".View.SettingsActivity.TransactionHistoryActivity" />
+        <activity android:name=".View.EodActivity.ReprintActivity" />
+        <activity android:name=".View.Cashout.UssdTransactionActivity" />
+        <activity android:name=".View.HomeActivity.AccountActivity" />
+        <activity android:name=".View.SettingsActivity.NotificationActivity" />
+        <activity android:name=".View.SettingsActivity.PolicyActivity" />
+        <activity android:name=".View.LoginActivity.SettingUpAccountActivity" />
+        <activity android:name=".View.LoginActivity.VerificationCodeActivity" />
+        <activity android:name=".View.Payout.Billpayment.Junks.StartBillpaymentActivity" />
+        <activity android:name=".View.Payout.Billpayment.Junks.BillsFailedActivity"/>
+        <activity android:name=".View.Payout.Billpayment.Junks.BillsApprovedActivity"/>
+        <activity android:name=".View.Payout.Billpayment.Junks.BillsTransactionActivity"/>
+        <activity android:name=".View.Payout.Transfer.Card.CardTransferAmountActivity"/>
+        <activity android:name=".View.Payout.Transfer.Cash.DepositFailedActivity"/>
+        <activity android:name=".View.Payout.Transfer.Cash.DepositApprovedActivity"/>
+        <activity android:name=".View.Payout.Transfer.Card.CardTransferEnterPinActivity"/>
+        <activity android:name=".View.Payout.Transfer.Cash.DepositEnterPinActivity"/>
+        <activity android:name=".View.Payout.Transfer.Cash.DepositTransactionActivity"/>
+        <activity android:name=".View.Payout.Transfer.Cash.DepositAmountActivity"/>
+        <activity android:name=".View.Cashout.AmountActivity"/>
+        <activity android:name=".View.Cashout.EnterPinActivity"/>
+        <activity android:name=".View.Cashout.TransactionActivity"/>
+        <activity android:name=".View.Cashout.FailedActivity"/>
+        <activity android:name=".View.Cashout.ApprovedActivity"/>
+        <activity android:name=".View.Electricity.ElectricityDashboardActivity"/>
+        <activity android:name=".View.Electricity.ElectricityPaymentMethodActivity"/>
+        <activity android:name=".View.Electricity.Cash.ElectricityEnterPinActivity"/>
+        <activity android:name=".View.Electricity.Card.ElectricityCardEnterPinActivity"/>
+        <activity android:name=".View.Electricity.Cash.ElectricityCashAmountActivity"/>
+        <activity android:name=".View.Electricity.Card.ElectricityCardAmountActivity"/>
+        <activity android:name=".View.Electricity.Cash.ElectricityFailedActivity"/>
+        <activity android:name=".View.Electricity.Cash.ElectricityApprovedActivity"/>
+        <activity android:name=".View.Electricity.Cash.ElectricityTransactionActivity"/>
+        <activity android:name=".View.CableTV.Cash.CableTVEnterPinActivity"/>
+        <activity android:name=".View.CableTV.CableTVAmountActivity"/>
+        <activity android:name=".View.CableTV.Cash.CableTVTransactionActivity"/>
+        <activity android:name=".View.CableTV.Cash.CableTVApprovedActivity"/>
+        <activity android:name=".View.CableTV.Cash.CableTVFailedActivity"/>
+        <activity android:name=".View.CableTV.Card.CableTVCardEnterPinActivity"/>
+        <activity android:name=".View.CableTV.CableTVPaymentMethodActivity"/>
+        <activity android:name=".View.CableTV.CableTVDashboardActivity"/>
+        <activity android:name=".View.Airtime.Card.AirtimeCardEnterPinActivity"/>
+        <activity android:name=".View.Airtime.Cash.AirtimeApprovedActivity"/>
+        <activity android:name=".View.Airtime.Cash.AirtimeEnterPinActivity"/>
+        <activity android:name=".View.Airtime.Cash.AirtimeFailedActivity"/>
+        <activity android:name=".View.Airtime.Cash.AirtimeTransactionActivity"/>
+        <activity android:name=".View.Airtime.AirtimeAmountActivity"/>
+        <activity android:name=".View.Airtime.AirtimeDashboardActivity"/>
+        <activity android:name=".View.Airtime.AirtimePaymentMethodActivity"/>
+        <activity android:name=".View.DataTopup.DataDashboardActivity"/>
+        <activity android:name=".View.CableTV.CableTVStartimesAmountActivity"/>
+    </application>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- Printer -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- LED -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Pinpad -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.CLOUDPOS_EMV" />
+    <uses-permission android:name="android.permission.CLOUDPOS_MSR" />
+    <uses-permission android:name="android.permission.CLOUDPOS_PRINTER" />
+    <uses-permission android:name="android.permission.CLOUDPOS_LED" />
+    <uses-permission android:name="android.permission.CLOUDPOS_PINPAD" />
+    <uses-permission android:name="android.permission.CLOUDPOS_PIN_GET_PIN_BLOCK" />
+    <uses-permission android:name="android.permission.CLOUDPOS_PIN_MAC" />
+    <uses-permission android:name="android.permission.CLOUDPOS_PIN_ENCRYPT_DATA" />
+    <uses-permission android:name="android.permission.CLOUDPOS_PIN_UPDATE_USER_KEY" />
+    <uses-permission android:name="android.permission.CLOUDPOS_PIN_UPDATE_MASTER_KEY" />
+    <uses-permission android:name="android.permission.CLOUDPOS_SAFE_MODULE_READONLY" />
+    <uses-permission android:name="android.permission.CLOUDPOS_SAFE_MODULE" />
+    <uses-permission android:name="android.permission.CLOUDPOS_SMARTCARD" />
+    <uses-permission android:name="android.permission.CLOUDPOS_CONTACTLESS_CARD" />
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES"
+        tools:ignore="ProtectedPermissions" />
+
+</manifest>

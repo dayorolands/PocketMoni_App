@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="0dp"
+    android:background="#FFFFFF"
+    tools:context=".View.Payout.Transfer.Cash.DepositEnterPinActivity">
+
+    <LinearLayout
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:background="#FFFFFF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+            <ImageView
+                android:padding="5dp"
+                android:id="@+id/back_btn_id"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/clear_icon"/>
+
+            <TextView
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#333333"
+                android:textSize="20sp"
+                android:text="@string/proceed_with_cash"/>
+        </RelativeLayout>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:background="@color/pocketmoni_white_smoke"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_below="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_above="@+id/pin_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical">
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="#E0E0E0"/>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:textColor="#828282"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bank_name"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:gravity="right"
+                    android:id="@+id/bank_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="#333333"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:textColor="#828282"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date_of"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:gravity="right"
+                    android:id="@+id/trans_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="#333333"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:textColor="#828282"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/account_name"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:gravity="right"
+                    android:id="@+id/acct_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="#333333"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:textColor="#828282"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/account_no"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:gravity="right"
+                    android:id="@+id/account_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="#333333"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:textColor="#828282"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/narration"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:gravity="right"
+                    android:id="@+id/narration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="#333333"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:textColor="#828282"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/phone"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:gravity="right"
+                    android:id="@+id/phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="#333333"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:textColor="#001042"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/amount"
+                    android:textStyle="italic"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:gravity="right"
+                    android:id="@+id/amt_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#001042"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="visible"
+            android:id="@+id/pin_layout"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/amt_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/pin_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#4F4F4F"
+                    android:text="@string/pocketmoni_pin"
+                    android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/pin_message"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="right"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FF0000"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/pin_label"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberPassword"
+                android:layout_below="@+id/amt_heading"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/custom_border_amount"
+                android:gravity="start"
+                android:textAlignment="textStart"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/pin_buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_below="@+id/pin_layout"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button style="@style/EnterPinBtnFonts"
+                        android:layout_marginStart="0dp"
+                        android:tag="1"
+                        android:text="1"/>
+                    <Button style="@style/EnterPinBtnFonts"
+                        android:tag="2"
+                        android:text="2"/>
+                    <Button style="@style/EnterPinBtnFonts"
+                        android:tag="3"
+                        android:text="3"/>
+                    <Button style="@style/EnterPinBtnFonts"
+                        android:tag="4"
+                        android:text="4"/>
+                    <Button style="@style/EnterPinBtnFonts"
+                        android:tag="5"
+                        android:text="5"/>
+                    <Button style="@style/EnterPinBtnFonts"
+                        android:layout_marginEnd="0dp"
+                        android:tag="6"
+                        android:text="6"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_below="@+id/pin_layout"
+                    android:gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button style="@style/EnterPinBtnFonts"
+                        android:layout_marginStart="0dp"
+                        android:tag="7"
+                        android:text="7"/>
+                    <Button style="@style/EnterPinBtnFonts"
+                        android:tag="8"
+                        android:text="8"/>
+                    <Button style="@style/EnterPinBtnFonts"
+                        android:tag="9"
+                        android:text="9"/>
+                    <Button style="@style/EnterPinBtnFonts"
+                        android:tag="0"
+                        android:text="0"/>
+                    <Button style="@style/EnterPinBtnFonts"
+                        android:id="@+id/btn_clear"
+                        android:tag="CLR"
+                        android:text="CLR"/>
+                    <Button style="@style/EnterPinBtnFonts"
+                        android:id="@+id/btn_del"
+                        android:layout_marginEnd="0dp"
+                        android:tag="DEL"
+                        android:text="DEL"/>
+                </LinearLayout>
+            </LinearLayout>
+            <Button
+                android:id="@+id/pay_btn"
+                android:background="@drawable/custom_border_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/confirm"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

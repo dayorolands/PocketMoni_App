@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/PocketMoniSdk/src/main/res/layout/configure_device_activity.xml" value="0.1" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/drawable/custom_border_amount.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/drawable/ic__x36_3_1_.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/drawable/ic_airtime_icon.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/drawable/ic_data.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/drawable/ic_data_icon.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/drawable/ic_light_bulb.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/activity_main.xml" value="0.2368659420289855" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/airtime_amount_activity.xml" value="0.24592391304347827" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/airtime_card_enterpin_activity.xml" value="0.19701086956521738" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/airtime_dashboard_activity.xml" value="0.19519927536231885" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/airtime_enterpin_activity.xml" value="0.24592391304347827" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/airtime_payment_method_activity.xml" value="0.24592391304347827" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/amount_activity.xml" value="0.1" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/approved_activity.xml" value="0.25" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/cable_tv_amount_activity.xml" value="0.24592391304347827" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/cable_tv_dashboard_activity.xml" value="0.25" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/card_transfer_amount_activity.xml" value="0.24592391304347827" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/card_transfer_enterpin_activity.xml" value="0.2368659420289855" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/configuration_activity.xml" value="0.24592391304347827" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/configure_device_activity.xml" value="0.25" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/data_amount_activity.xml" value="0.24592391304347827" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/data_dashboard_activity.xml" value="0.25" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/deposite_transaction_activity.xml" value="0.24592391304347827" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/discos_custom_list.xml" value="0.24592391304347827" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/discos_selection_dialog.xml" value="0.2368659420289855" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/dropdown_item.xml" value="0.2368659420289855" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/electricity_amount_activity.xml" value="0.24592391304347827" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/electricity_card_amount_activity.xml" value="0.264" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/electricity_card_enterpin_activity.xml" value="0.4" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/electricity_cash_enterpin_activity.xml" value="0.2368659420289855" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/electricity_dashboard_activity.xml" value="0.25" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/electricity_enterpin_activity.xml" value="0.25" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/electricity_payment_method_activity.xml" value="0.24592391304347827" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/enterpin_activity.xml" value="0.24592391304347827" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/eod_activity.xml" value="0.25" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/fragment_account.xml" value="0.25" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/fragment_cashout.xml" value="0.24592391304347827" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/fragment_data.xml" value="0.25" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/fragment_payout.xml" value="0.1" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/spinner_custom_list.xml" value="0.24592391304347827" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/trans_processing_activity.xml" value="0.1" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/welcome_activity.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+</project>

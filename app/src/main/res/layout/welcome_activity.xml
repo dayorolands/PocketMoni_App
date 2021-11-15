@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".View.WelcomeActivity.WelcomeActivity">
+
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="wrap_content"
+        android:id="@+id/tabLayoutId"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:padding="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
+        app:tabIndicatorHeight="0dp"
+        app:tabBackground="@drawable/custom"/>
+
+    <androidx.viewpager.widget.ViewPager
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/viewHolderId"
+        android:layout_below="@+id/tabLayoutId"
+        android:layout_above="@+id/continue_to_app"
+        android:layout_marginBottom="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <Button
+        android:id="@+id/continue_to_app"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/sign_in_layout"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/custom_border_button"
+        android:text="LOGON"
+        style="@style/pocketmoni_default_button_style"/>
+
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:id="@+id/sign_in_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/sign_in"
+            style="@style/pocketmoni_title_text_style"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textColor="#4F4F4F"
+            android:textSize="16sp"
+            android:text="Click the logon button to continue."/>
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/create_acct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="@string/sign_in"
+            android:textColor="#001042"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</RelativeLayout>

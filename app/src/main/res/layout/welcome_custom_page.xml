@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginLeft="15dp"
+            android:textSize="22sp"
+            style="@style/pocketmoni_title_text_style"
+            android:text="Visit any agent location"
+            android:id="@+id/big_text"/>
+        <TextView
+            style="@style/pocketmoni_title_text_style"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="13sp"
+            android:text="Make seamless transactions, swiftly"
+            android:id="@+id/small_text"/>
+        <ImageView
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/ic_welcome_frame1"
+            android:id="@+id/welcome_image"
+            />
+    </LinearLayout>
+</RelativeLayout>

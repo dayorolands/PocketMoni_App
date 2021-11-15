@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".View.SettingsActivity.TransactionHistoryActivity">
+
+    <LinearLayout
+        android:id="@+id/layer_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:background="#FFFFFF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:padding="20dp"
+                android:id="@+id/back_btn_id"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/clear_icon"/>
+
+            <TextView
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:text="@string/transaction_history"/>
+        </RelativeLayout>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:background="@color/pocketmoni_white_smoke"/>
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="20dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/layer_two"
+        android:layout_below="@id/layer_one"
+        android:layout_margin="20dp"
+        app:cardCornerRadius="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <LinearLayout
+            android:background="#F3EDFF"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#4F4F4F"
+                android:textSize="15sp"
+                android:text="@string/available_balance"/>
+
+            <TextView
+                android:id="@+id/balance_narration"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#4F4F4F"
+                android:textSize="30sp"
+                android:text="₦0.00"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <SearchView
+        android:inputType="textAutoComplete"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/layer_two"
+        android:id="@+id/search_box_id"
+        android:background="@drawable/custom_border_amount"
+        android:layout_width="match_parent"
+        android:queryHint="@string/search_by_date"
+        android:layout_height="40dp"/>
+
+    <RelativeLayout
+        android:layout_below="@id/search_box_id"
+        android:id="@+id/date_range_id"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Spinner
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/from_date"/>
+        <Spinner
+            android:layout_toRightOf="@id/from_date"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/end_date"/>
+        <Button
+            android:layout_alignParentRight="true"
+            android:id="@+id/filter_btn_id"
+            android:background="@drawable/custom_border_button"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:text=">"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/date_range_id">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/eod_home_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</RelativeLayout>

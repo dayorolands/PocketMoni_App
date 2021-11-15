@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:keepScreenOn="true"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".Views.ConfigureDeviceActivity">
+
+
+    <ProgressBar
+        android:id="@+id/config_loading_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/ProgressStyle"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="80dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textColor="#4F4F4F"
+        android:id="@+id/configure_label_id"
+        android:text="@string/configuring_your_device_please_wait"
+        android:textSize="23sp" />
+
+    <Button
+        android:id="@+id/retry_btn"
+        android:onClick="onRetryBtnClicked"
+        android:background="@drawable/custom_border_button"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="Retry"
+        android:visibility="invisible"
+        android:gravity="center"
+        android:textColor="@color/white"/>
+
+</LinearLayout>

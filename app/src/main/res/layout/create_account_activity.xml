@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.LoginActivity.CreateAccountActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/welcomeTitleText"
+            style="@style/pocketmoni_title_text_style.login_title"
+            android:layout_marginTop="64dp"
+            android:text="@string/create_new_account"/>
+
+        <TextView
+            android:id="@+id/welcomeCaptionText"
+            android:text="@string/unlock_with_pocketmoni"
+            style="@style/pocketmoni_title_caption_style" />
+
+        <LinearLayout
+            android:id="@+id/ll1"
+            android:layout_marginTop="32dp"
+            style="@style/register_top_level_ll_style">
+            <LinearLayout
+                android:layout_marginRight="4dp"
+                style="@style/register_sublevel_ll_style">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/first_name"/>
+
+                <EditText
+                    android:id="@+id/firstNameTextLayout"
+                    android:background="@drawable/custom_border_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="true"
+                    android:layout_margin="0dp"
+                    android:hint="@string/input_required"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginLeft="4dp"
+                style="@style/register_sublevel_ll_style">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/last_name"/>
+
+                <EditText
+                    android:id="@+id/lastNameTextLayout"
+                    android:background="@drawable/custom_border_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="true"
+                    android:layout_margin="0dp"
+                    android:hint="@string/input_required"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/email"/>
+
+        <EditText
+            android:id="@+id/emailTextLayout"
+            android:background="@drawable/custom_border_edittext"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="20dp"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_email"/>
+
+        <LinearLayout
+            android:id="@+id/ll2"
+            android:layout_marginTop="16dp"
+            style="@style/register_top_level_ll_style">
+            <LinearLayout
+                android:layout_marginRight="4dp"
+                style="@style/register_sublevel_ll_style">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/phone_number"/>
+
+                <EditText
+                    android:id="@+id/phoneInputLayout"
+                    android:background="@drawable/custom_border_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:layout_margin="0dp"
+                    android:hint="@string/phone_number_hint"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginLeft="4dp"
+                style="@style/register_sublevel_ll_style">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bvn"/>
+
+                <EditText
+                    android:id="@+id/bvnTextLayout"
+                    android:background="@drawable/custom_border_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:layout_margin="0dp"
+                    android:hint="@string/input_required"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll3"
+            android:layout_marginTop="16dp"
+            style="@style/register_top_level_ll_style">
+            <LinearLayout
+                android:layout_marginRight="4dp"
+                style="@style/register_sublevel_ll_style">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gender"/>
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:entries="@array/gender_titles"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/spinner_bg"
+                    android:id="@+id/genderSpinner"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginLeft="4dp"
+                style="@style/register_sublevel_ll_style">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date_of_birth"/>
+
+                <EditText
+                    android:id="@+id/dateOfbirt"
+                    android:background="@drawable/custom_border_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="date"
+                    android:layout_margin="0dp"
+                    android:hint="@string/date_format_hint"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll4"
+            android:layout_marginTop="16dp"
+            style="@style/register_top_level_ll_style">
+            <LinearLayout
+                android:layout_marginRight="4dp"
+                style="@style/register_sublevel_ll_style">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_4_digit_pin"/>
+
+                <EditText
+                    android:id="@+id/pinInputLayout"
+                    android:background="@drawable/custom_border_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberPassword"
+                    android:layout_margin="0dp"
+                    android:hint="@string/input_required"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginLeft="4dp"
+                style="@style/register_sublevel_ll_style">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/confirm_pin"/>
+
+                <EditText
+                    android:id="@+id/confirmPinLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberPassword"
+                    android:background="@drawable/custom_border_edittext"
+                    android:layout_margin="0dp"
+                    android:hint="@string/input_required"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/createAccountBtn"
+            style="@style/pocketmoni_default_button_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="34dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/custom_border_button"
+            android:text="@string/create_account" />
+
+    </LinearLayout>
+
+
+</ScrollView>

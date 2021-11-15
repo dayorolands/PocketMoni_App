@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="nibss_env_list">
+        <item>EPMS</item>
+        <item>CTMS</item>
+    </string-array>
+
+    <string-array name="eod_data_list">
+        <item>ALL</item>
+    </string-array>
+
+    <string-array name="gender_titles">
+        <item>Female</item>
+        <item>Male</item>
+    </string-array>
+
+
+    <string-array name="billers_list">
+        <item>Select Biller</item>
+    </string-array>
+
+    <string-array name="PlanList">
+        <item>Select Plan</item>
+        <item>Prepaid</item>
+        <item>Postpaid</item>
+    </string-array>
+
+    <string-array name="bouquetList">
+        <item>Select a plan</item>
+    </string-array>
+
+    <string-array name="banks_list">
+        <item>Select Bank</item>
+    </string-array>
+
+</resources>

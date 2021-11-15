@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E5E5E5"
+    android:gravity="start|center"
+    android:orientation="vertical"
+    tools:context=".View.LoginActivity.VerificationCodeActivity">
+
+    <TextView
+        android:layout_marginLeft="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:textColor="#000000"
+        android:text="@string/verify_phone_number"/>
+
+    <TextView
+        android:layout_marginLeft="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="#333333"
+        android:text="Input the code sent to 090XXXX4567"/>
+
+    <com.alimuzaffar.lib.pin.PinEntryEditText
+        android:id="@+id/txt_pin_entry"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_height="wrap_content"
+        android:cursorVisible="false"
+        android:maxLength="5"
+        android:inputType="number"
+        android:textIsSelectable="false"
+        android:digits="1234567890"
+        android:textSize="20sp"
+        app:pinAnimationType="popIn"
+        app:pinBackgroundDrawable="@drawable/custom_border_verifpin"
+        app:pinBackgroundIsSquare="false"/>
+
+    <LinearLayout
+        android:layout_marginBottom="40dp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/did_nt_receive_a_code"/>
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:textStyle="bold"
+            android:textColor="#4F4F4F"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/resend_code"/>
+    </LinearLayout>
+
+</LinearLayout>
