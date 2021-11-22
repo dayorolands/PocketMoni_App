@@ -138,7 +138,7 @@ public class ElectricityReceipt {
         }else{
             try {
                 if(!model.getToken().isEmpty()){
-                    combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TOKEN", 24, GenerateBitmap.AlignEnum.CENTER, true, false));
+                    combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TOKEN:", 24, GenerateBitmap.AlignEnum.CENTER, true, false));
                     combBitmap.addBitmap(GenerateBitmap.str2Bitmap(model.getToken(), 24, GenerateBitmap.AlignEnum.CENTER, true, false));
                 }
             }catch(Exception e){
@@ -186,9 +186,10 @@ public class ElectricityReceipt {
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TIME: ", result[1], 20, true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("AGENT ID: ", Emv.agentId, 20, true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TRANS TYPE: ", result[4], 20, true, false));
-        combBitmap.addBitmap(GenerateBitmap.str2Bitmap("DISCO: ", result[19], 20, true, false));
+        combBitmap.addBitmap(GenerateBitmap.str2Bitmap("CUSTOMER ID: ", result[14], 20, true, false));
+        //combBitmap.addBitmap(GenerateBitmap.str2Bitmap("DISCO: ", result[19], 20, true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("NAME: ", result[13], 20, true, false));
-        combBitmap.addBitmap(GenerateBitmap.str2Bitmap(result[18], 20, GenerateBitmap.AlignEnum.CENTER, true, false));
+        //combBitmap.addBitmap(GenerateBitmap.str2Bitmap(result[18], 20, GenerateBitmap.AlignEnum.CENTER, true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
         if(!result[7].equals("00")){
             combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TRANSACTION DECLINED", 20, GenerateBitmap.AlignEnum.CENTER, true, false));

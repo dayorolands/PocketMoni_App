@@ -8,6 +8,7 @@ import android.os.Message;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.etranzact.pocketmoni.Model.CardModel;
+import com.etranzact.pocketmoni.Model.ElectricityModel;
 import com.etranzact.pocketmoni.R;
 import com.etranzact.pocketmoni.TransEnvironment.TMS;
 import com.sdk.pocketmonisdk.TransEnvironment.Nibss;
@@ -18,6 +19,7 @@ import Utils.Keys;
 import Utils.NotificationService;
 import Utils.TransDB;
 import Utils.TransRoute;
+import Utils.TransType;
 
 public class TransactionActivity extends AppCompatActivity {
 
@@ -144,6 +146,11 @@ public class TransactionActivity extends AppCompatActivity {
                         if (!iad.isEmpty()) Emv.setEmv("91", iad);
                         if (!st1.isEmpty()) Emv.setEmv("71", st1);
                         if (!st2.isEmpty()) Emv.setEmv("72", st2);
+                        if (Emv.transactionType == TransType.ELECTRICITY){
+                        String token = Keys.parseJson(response, "rechargeToken");
+                        ElectricityModel model = new ElectricityModel();
+                        model.setToken(token);
+                        }
                         Emv.setEmv("8A", Keys.asciiToHex(respCode));
                         ShowApproved();
                     } else {
@@ -177,7 +184,8 @@ public class TransactionActivity extends AppCompatActivity {
         try {
             String amt = String.format(Locale.getDefault(),"%,.2f", Double.parseDouble(Emv.getMinorAmount()) / 100);
             eod.open();
-            eod.insert(Emv.getTransactionDatTime(), Emv.transactionType, amt, Emv.responseCode, Emv.getMaskedPan(), CardModel.getTransactionData(TransactionActivity.this));
+            eod.insert(Emv.getTransactionDatTime(), Emv.transactionType, amt, Emv.responseCode,
+                    Emv.getMaskedPan(), CardModel.getTransactionData(TransactionActivity.this));
             eod.close();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -192,9 +200,11 @@ public class TransactionActivity extends AppCompatActivity {
             String amt = String.format(Locale.getDefault(),"%,.2f", Double.parseDouble(Emv.getMinorAmount()) / 100);
             eod.open();
             if(Emv.environment.equals("TMS") && Emv.responseMessage.isEmpty()){
-                eod.insert(Emv.getTransactionDatTime(), Emv.transactionType, amt, Emv.responseCode, Emv.getMaskedPan(), CardModel.getTransactionData(TransactionActivity.this) + "|" + CardModel.getRequeryPayload());
+                eod.insert(Emv.getTransactionDatTime(), Emv.transactionType, amt, Emv.responseCode, Emv.getMaskedPan(),
+                        CardModel.getTransactionData(TransactionActivity.this) + "|" + CardModel.getRequeryPayload());
             }else{
-                eod.insert(Emv.getTransactionDatTime(), Emv.transactionType, amt, Emv.responseCode, Emv.getMaskedPan(), CardModel.getTransactionData(TransactionActivity.this));
+                eod.insert(Emv.getTransactionDatTime(), Emv.transactionType, amt, Emv.responseCode, Emv.getMaskedPan(),
+                        CardModel.getTransactionData(TransactionActivity.this));
             }
             eod.close();
         } catch (Exception ex) {

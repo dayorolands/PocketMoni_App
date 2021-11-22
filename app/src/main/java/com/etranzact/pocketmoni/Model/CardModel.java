@@ -82,7 +82,9 @@ public class CardModel {
                 model.getCustomerId() + "|" + //14 Electricity Customer ID
                 model.getBillerName() + "|" + //15 Electricity Biller Name
                 model.getPaymentRef() + "|" + //16 Electricity Payment Ref
-                model.getDescription(); //17 Electricity Description
+                model.getDescription() + "|" + //17 Electricity Description
+                model.getToken(); // 18 Recharge Token
+
     }
 
     public static String getRequeryPayload(){

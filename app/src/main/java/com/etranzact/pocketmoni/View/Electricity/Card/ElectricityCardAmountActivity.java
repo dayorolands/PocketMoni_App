@@ -23,10 +23,6 @@ import com.etranzact.pocketmoni.Dialogs.LoadingProgressDialog;
 import com.etranzact.pocketmoni.Model.ElectricityModel;
 import com.etranzact.pocketmoni.R;
 import com.etranzact.pocketmoni.View.Cashout.TransactionActivity;
-import com.etranzact.pocketmoni.View.Electricity.Cash.ElectricityEnterPinActivity;
-import com.etranzact.pocketmoni.View.Electricity.Cash.ElectricityTransactionActivity;
-import com.etranzact.pocketmoni.View.Payout.Transfer.Card.CardTransferAmountActivity;
-import com.etranzact.pocketmoni.View.Payout.Transfer.Card.CardTransferEnterPinActivity;
 
 import java.text.DecimalFormat;
 import java.util.Locale;
