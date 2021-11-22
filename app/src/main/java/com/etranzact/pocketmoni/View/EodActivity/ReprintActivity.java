@@ -40,7 +40,7 @@ import Utils.TransType;
 public class ReprintActivity extends AppCompatActivity {
 
     TextView transDate, transTime, transStatus, cardHolder, cardNo,
-            transType,cardType, amount, transRrn;
+            transType,cardType, amount, transRrn, transToken;
     Button reprintBtn;
     ImageView backBtn;
     private static String reprintDetails = "";
@@ -67,6 +67,7 @@ public class ReprintActivity extends AppCompatActivity {
         cardType = findViewById(R.id.card_type);
         amount = findViewById(R.id.trans_amt);
         transRrn = findViewById(R.id.trans_rrn);
+        transToken = findViewById(R.id.trans_token);
         SetParameters();
         doIsRefreshLogic();
     }
@@ -96,6 +97,7 @@ public class ReprintActivity extends AppCompatActivity {
         cardType.setText(result[12]);
         transRrn.setText(result[8]);
         amount.setText(result[6]);
+        transToken.setText(result[18]);
         requeryPayload = result[result.length-1];
         //amount 6
         //response code 7
@@ -231,7 +233,8 @@ public class ReprintActivity extends AppCompatActivity {
                 data += result[13] + "|" + //Customer Name
                 result[14] + "|" + //Customer ID
                 result[16] + "|" + //REF
-                result[17]; //Description
+                result[17] + "|" + //Description
+                result[20]; //Token
         }else  if(TransType.valueOf(result[4]) == TransType.CABLE_TV){
             data += result[13] + "|" + //Customer Name
                 result[14] + "|" + //Customer ID
