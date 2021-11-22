@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ifedayo.adekoya/AndroidStudioProjects/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/airtime_enterpin_activity.xml" value="0.17300724637681159" />
+        <entry key="..\:/Users/ifedayo.adekoya/AndroidStudioProjects/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/airtime_payment_method_activity.xml" value="0.17300724637681159" />
+        <entry key="..\:/Users/ifedayo.adekoya/AndroidStudioProjects/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/electricity_payment_method_activity.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/PocketMoniSdk/src/main/res/layout/configure_device_activity.xml" value="0.1" />
         <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/drawable/custom_border_amount.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/drawable/ic__x36_3_1_.xml" value="0.26614583333333336" />
