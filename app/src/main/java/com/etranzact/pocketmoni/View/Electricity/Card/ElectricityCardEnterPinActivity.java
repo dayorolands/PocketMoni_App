@@ -63,13 +63,13 @@ public class ElectricityCardEnterPinActivity extends AppCompatActivity implement
         originalAmount = Double.parseDouble(model.getAmount());
         convenientAmount = Double.parseDouble(model.getConvenientFee());
         Log.d("The_Convenient_Amount", "The convenient Amount is " + convenientAmount);
-        //double totalValue = Double.parseDouble(String.format(Locale.getDefault(), "%,.2f",model.getAmount() + model.getConvenientFee()));
         total.setText("TOTAL: ₦" + String.format("%,.2f", (originalAmount + convenientAmount)));
 
         payButton.setOnClickListener(this);
         btnBack.setOnClickListener((view)->{
             CardInfo.StopTransaction(this);
         });
+
         //Loop through all the buttons in the control and set onclick listener for them
         LinearLayout linearLayout = findViewById(R.id.pin_buttons);
         int btnNo = 0;
