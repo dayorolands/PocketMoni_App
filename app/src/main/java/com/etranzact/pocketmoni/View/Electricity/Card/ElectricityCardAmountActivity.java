@@ -219,7 +219,8 @@ public class ElectricityCardAmountActivity extends AppCompatActivity implements 
                 String reference = Keys.parseJson(response,"paymentRef");
                 String customerName = Keys.parseJson(response,"customerName");
                 Log.d("Result:", "The customer name is " + customerName);
-                String address = Keys.parseJson(response,"address");
+                String address = Keys.parseJson(response,"otherInfo1");
+                Log.d("Result:", "The customer address is " + address);
                 String billId = Keys.parseJson(response, "billId");
                 this.acctName.setVisibility(View.VISIBLE);
                 this.acctName.setText(customerName);

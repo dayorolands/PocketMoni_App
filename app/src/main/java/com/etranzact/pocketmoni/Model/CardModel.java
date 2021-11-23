@@ -86,7 +86,6 @@ public class CardModel {
                 model.getAddress() + "|" + //18 Address
                 model.getSessionCategory() + "|" + //Electricity Session Category
                 model.getToken(); // 20 Electricity Token
-
     }
 
     public static String getRequeryPayload(){

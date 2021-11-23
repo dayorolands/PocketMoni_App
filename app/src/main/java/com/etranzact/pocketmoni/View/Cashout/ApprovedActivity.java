@@ -19,7 +19,7 @@ import Utils.TransType;
 public class ApprovedActivity extends AppCompatActivity {
 
     Button printButton, closeBtn;
-    TextView transDate, transTime, cardHolder, cardNo, transType, cardType, amount;
+    TextView transDate, transTime, cardHolder, cardNo, transType, cardType, amount, meterNo, billerName;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +31,8 @@ public class ApprovedActivity extends AppCompatActivity {
         transType = findViewById(R.id.trans_type);
         cardType = findViewById(R.id.card_type);
         amount = findViewById(R.id.trans_amt);
+        meterNo = findViewById(R.id.trans_customer_id);
+        billerName = findViewById(R.id.trans_biller_name);
         closeBtn = findViewById(R.id.close_btn_id);
         closeBtn.setOnClickListener((view) -> {
             CardInfo.StopTransaction(ApprovedActivity.this);
@@ -82,5 +84,7 @@ public class ApprovedActivity extends AppCompatActivity {
         transType.setText(result[4]);
         cardType.setText(result[12]);
         amount.setText(result[6]);
+        billerName.setText(result[15]);
+        meterNo.setText(result[14]);
     }
 }
