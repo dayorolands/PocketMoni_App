@@ -160,6 +160,7 @@ public class ElectricityCashAmountActivity extends AppCompatActivity implements 
                 String reference = Keys.parseJson(response,"reference");
                 String customerName = Keys.parseJson(response,"customerName");
                 String address = Keys.parseJson(response,"address");
+                Log.d("Result:", "The customer address is " + address);
                 model.setPaymentRef(reference);
                 model.setCustomerName(customerName);
                 model.setAddress(address);
