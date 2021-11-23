@@ -147,9 +147,12 @@ public class TransactionActivity extends AppCompatActivity {
                         if (!st1.isEmpty()) Emv.setEmv("71", st1);
                         if (!st2.isEmpty()) Emv.setEmv("72", st2);
                         if (Emv.transactionType == TransType.ELECTRICITY){
-                        String token = Keys.parseJson(response, "rechargeToken");
-                        ElectricityModel model = new ElectricityModel();
-                        model.setToken(token);
+                            ElectricityModel model = new ElectricityModel();
+                            String token = Keys.parseJson(response, "rechargeToken");
+                            if(token.isEmpty() || token == null){
+                                model.setToken("");
+                            }
+                            model.setToken(token);
                         }
                         Emv.setEmv("8A", Keys.asciiToHex(respCode));
                         ShowApproved();

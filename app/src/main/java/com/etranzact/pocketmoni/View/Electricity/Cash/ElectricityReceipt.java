@@ -195,9 +195,9 @@ public class ElectricityReceipt {
             combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TRANSACTION DECLINED", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
         }else{
             try {
-                if(!result[18].isEmpty()){
+                if(!result[20].isEmpty()){
                     combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TOKEN", 24, GenerateBitmap.AlignEnum.CENTER, true, false));
-                    combBitmap.addBitmap(GenerateBitmap.str2Bitmap(result[18], 24, GenerateBitmap.AlignEnum.CENTER, true, false));
+                    combBitmap.addBitmap(GenerateBitmap.str2Bitmap(result[20], 24, GenerateBitmap.AlignEnum.CENTER, true, false));
                 }
             }catch(Exception e){
                 e.printStackTrace();

@@ -179,8 +179,10 @@ public class MyPrinter {
             combBitmap.addBitmap(GenerateBitmap.str2Bitmap("NAME: ", model.getCustomerName(), 20, true, false));
             combBitmap.addBitmap(GenerateBitmap.str2Bitmap("CUSTOMER ID: ", model.getCustomerId(), 20, true, false));
             combBitmap.addBitmap(GenerateBitmap.str2Bitmap("REF: ", model.getPaymentRef(), 20, true, false));
-            combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TOKEN: ", 24, GenerateBitmap.AlignEnum.CENTER, true, false));
-            combBitmap.addBitmap(GenerateBitmap.str2Bitmap(model.getToken(), 24, GenerateBitmap.AlignEnum.CENTER, true, false));
+            if(Emv.responseCode.equals("00")) {
+                combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TOKEN: ", 24, GenerateBitmap.AlignEnum.CENTER, true, false));
+                combBitmap.addBitmap(GenerateBitmap.str2Bitmap(model.getToken(), 24, GenerateBitmap.AlignEnum.CENTER, true, false));
+            }
         }
 
         if(!Emv.responseCode.equals("00")){
@@ -244,7 +246,10 @@ public class MyPrinter {
             combBitmap.addBitmap(GenerateBitmap.str2Bitmap("NAME: ", result[13], 20, true, false));
             combBitmap.addBitmap(GenerateBitmap.str2Bitmap("CUSTOMER ID: ", result[14], 20, true, false));
             combBitmap.addBitmap(GenerateBitmap.str2Bitmap("REF: ", result[16], 20, true, false));
-            combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TOKEN: ", result[18], 24, true, false ));
+            if(result[7].equals("00")) {
+                combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TOKEN: ", 24, GenerateBitmap.AlignEnum.CENTER, true, false));
+                combBitmap.addBitmap(GenerateBitmap.str2Bitmap(result[20],24, GenerateBitmap.AlignEnum.CENTER, true, false));
+            }
         }
 
         if(!result[7].equals("00")){

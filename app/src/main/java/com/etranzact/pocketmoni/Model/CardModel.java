@@ -83,7 +83,9 @@ public class CardModel {
                 model.getBillerName() + "|" + //15 Electricity Biller Name
                 model.getPaymentRef() + "|" + //16 Electricity Payment Ref
                 model.getDescription() + "|" + //17 Electricity Description
-                model.getToken(); // 18 Recharge Token
+                model.getAddress() + "|" + //18 Address
+                model.getSessionCategory() + "|" + //Electricity Session Category
+                model.getToken(); // 20 Electricity Token
 
     }
 
