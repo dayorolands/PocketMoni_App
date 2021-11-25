@@ -183,11 +183,11 @@ public class MyPrinter {
             combBitmap.addBitmap(GenerateBitmap.str2Bitmap("SERVICE ADDRESS:", 24, GenerateBitmap.AlignEnum.CENTER, true, false));
             combBitmap.addBitmap(GenerateBitmap.str2Bitmap(model.getAddress(), 24, GenerateBitmap.AlignEnum.CENTER, true, false));
             if(Emv.responseCode.equals("00") && !model.getToken().isEmpty()) {
-                combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TOKEN:", 24, GenerateBitmap.AlignEnum.CENTER, true, false));
-                combBitmap.addBitmap(GenerateBitmap.str2Bitmap(model.getToken(), 24, GenerateBitmap.AlignEnum.CENTER, true, false));
+                combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TOKEN:", 28, GenerateBitmap.AlignEnum.CENTER, true, true));
+                combBitmap.addBitmap(GenerateBitmap.str2Bitmap(model.getToken(), 28, GenerateBitmap.AlignEnum.CENTER, true, true));
             }
+            combBitmap.addBitmap(GenerateBitmap.str2Bitmap( model.getDescription(), 26, GenerateBitmap.AlignEnum.CENTER,  true, false));
         }
-
         if(!Emv.responseCode.equals("00")){
             combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TRANSACTION DECLINED", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
         }

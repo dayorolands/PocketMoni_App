@@ -222,12 +222,21 @@ public class ElectricityCardAmountActivity extends AppCompatActivity implements 
                 String address = Keys.parseJson(response,"otherInfo1");
                 Log.d("Result:", "The customer address is " + address);
                 String billId = Keys.parseJson(response, "billId");
+                String arrears = Keys.parseJson(response, "arrears");
+                if(!arrears.isEmpty()){
+                    model.setDescription("ARREARS: " + arrears);
+                }else{
+                    model.setDescription("ARREARS: 0.00");
+                }
+                //String arrears = customerDetails.split("\\|")[4];
                 this.acctName.setVisibility(View.VISIBLE);
                 this.acctName.setText(customerName);
+                model.setOutstandingBal("");
                 model.setPaymentRef(reference);
                 model.setCustomerName(customerName);
                 model.setAddress(address);
                 model.setId(billId);
+                //Force route to TMS only
                 Emv.environment = "TMS";
                 loadingDialog.dismiss();
                 electricHandler = new Handler(getMainLooper());

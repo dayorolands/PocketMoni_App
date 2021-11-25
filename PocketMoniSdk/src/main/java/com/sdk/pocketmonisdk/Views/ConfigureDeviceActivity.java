@@ -30,9 +30,9 @@ public class ConfigureDeviceActivity extends AppCompatActivity {
     ProgressBar progress;
     Button retryBtn;
     public static Activity parentActivity;
-    private static final String KEY = "cable_cat_key";
-    private static final String EKEY = "cat_key";
-    private static final String AKEY = "airtime_cat_key";
+//    private static final String KEY = "cable_cat_key";
+//    private static final String EKEY = "cat_key";
+//    private static final String AKEY = "airtime_cat_key";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,34 +94,13 @@ public class ConfigureDeviceActivity extends AppCompatActivity {
                         }
                         break;
                     case 3:
-                        displayMessage("Synchronizing...");
+                        displayMessage("Finishing setup...");
                         boolean syncSuccess = doSynchronization();
                         if(syncSuccess){
                             configurationHandler.postDelayed(configurationRunnable, 1000);
                         }
                         break;
                     case 4:
-                        displayMessage("Setting up Cable TV");
-                        boolean configureCableTV = configureCableTV(ConfigureDeviceActivity.this);
-                        if(configureCableTV){
-                            configurationHandler.postDelayed(configurationRunnable, 1000);
-                        }
-                        break;
-                    case 5:
-                        displayMessage("Setting up Electricity");
-                        boolean configureElectric = configureElectricity(ConfigureDeviceActivity.this);
-                        if(configureElectric){
-                            configurationHandler.postDelayed(configurationRunnable, 1000);
-                        }
-                        break;
-                    case 6:
-                        displayMessage("Finishing Up..");
-                        boolean configureAirtime = configureAirtime(ConfigureDeviceActivity.this);
-                        if(configureAirtime){
-                            configurationHandler.postDelayed(configurationRunnable, 1000);
-                        }
-                        break;
-                    case 7:
                         finish();
                         break;
                 }
@@ -197,49 +176,49 @@ public class ConfigureDeviceActivity extends AppCompatActivity {
         return false;
     }
 
-    private boolean configureCableTV(Activity activity){
-        cnt = 5;
-        HashMap<String,String> headers = new HashMap<>();
-        headers.put("Content-Type","application/json");
-        headers.put("Authorization",Emv.accessToken);
-        String json = HttpRequest.reqHttp("GET",Emv.cableTvCategoryUrl,"",headers);
-        String respCode = Keys.parseJson(json, "responseCode");
-        if(respCode.equals("00")){
-            displayMessage("Setting up Cable TV complete");
-            SharedPref.set(parentActivity, KEY, json);
-            return true;
-        }
-        return false;
-    }
+//    private boolean configureCableTV(Activity activity){
+//        cnt = 5;
+//        HashMap<String,String> headers = new HashMap<>();
+//        headers.put("Content-Type","application/json");
+//        headers.put("Authorization",Emv.accessToken);
+//        String json = HttpRequest.reqHttp("GET",Emv.cableTvCategoryUrl,"",headers);
+//        String respCode = Keys.parseJson(json, "responseCode");
+//        if(respCode.equals("00")){
+//            displayMessage("Setting up Cable TV complete");
+//            SharedPref.set(parentActivity, KEY, json);
+//            return true;
+//        }
+//        return false;
+//    }
 
-    private boolean configureElectricity(Activity activity){
-        cnt = 6;
-        HashMap<String, String> headers = new HashMap<>();
-        headers.put("Content-Type","application/json");
-        headers.put("Authorization",Emv.accessToken);
-        String json = HttpRequest.reqHttp("GET", Emv.electricityCategoryUrl, "", headers);
-        if((!json.isEmpty()) &&  (!json.contains("responseCode"))){
-            displayMessage("Electricity Setup is complete");
-            SharedPref.set(parentActivity, EKEY,json);
-            return true;
-        }
-        return false;
-    }
+//    private boolean configureElectricity(Activity activity){
+//        cnt = 6;
+//        HashMap<String, String> headers = new HashMap<>();
+//        headers.put("Content-Type","application/json");
+//        headers.put("Authorization",Emv.accessToken);
+//        String json = HttpRequest.reqHttp("GET", Emv.electricityCategoryUrl, "", headers);
+//        if((!json.isEmpty()) &&  (!json.contains("responseCode"))){
+//            displayMessage("Electricity Setup is complete");
+//            SharedPref.set(parentActivity, EKEY,json);
+//            return true;
+//        }
+//        return false;
+//    }
 
-    private boolean configureAirtime(Activity activity){
-        cnt = 7;
-        HashMap<String,String> headers = new HashMap<>();
-        headers.put("Content-Type","application/json");
-        headers.put("Authorization",Emv.accessToken);
-        String json = HttpRequest.reqHttp("GET",Emv.airtimeCategoryURl,"",headers);
-        String respCode = Keys.parseJson(json,"responseCode");
-        if(respCode.equals("00")){
-            displayMessage("Setup is complete");
-            SharedPref.set(parentActivity,AKEY,json);
-            return true;
-        }
-        return false;
-    }
+//    private boolean configureAirtime(Activity activity){
+//        cnt = 7;
+//        HashMap<String,String> headers = new HashMap<>();
+//        headers.put("Content-Type","application/json");
+//        headers.put("Authorization",Emv.accessToken);
+//        String json = HttpRequest.reqHttp("GET",Emv.airtimeCategoryURl,"",headers);
+//        String respCode = Keys.parseJson(json,"responseCode");
+//        if(respCode.equals("00")){
+//            displayMessage("Setup is complete");
+//            SharedPref.set(parentActivity,AKEY,json);
+//            return true;
+//        }
+//        return false;
+//    }
 
     void displayMessage(String message){
         Handler handler = new Handler(getMainLooper(),(msg)->{

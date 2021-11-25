@@ -2,6 +2,10 @@ package com.etranzact.pocketmoni.Model;
 
 import android.app.Activity;
 import android.util.Log;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +20,7 @@ import Utils.SharedPref;
 
 public class AirtimeModel {
     private static final List<Plan> planDetails = new ArrayList<>();
-    private static final String AKEY = "airtime_cat_key";
+    private static final String KEY = "airtime_cat_key";
     public final String PIN_KEY = "A8BF4C78F2EEEDB96FAF3A0655454345";
     public final String CUSTOM_PAN = "0000000000000000";
 
@@ -202,33 +206,37 @@ public class AirtimeModel {
         this.internetListener = internetCallback;
         new Thread(()->{
             try{
-                String json = SharedPref.get(activity,AKEY,"");
+                String json = SharedPref.get(activity,KEY,"");
                 HashMap<String,String> headers = new HashMap<>();
                 headers.put("Content-Type","application/json");
                 headers.put("Authorization",Emv.accessToken);
                 if(json.isEmpty()){
                     json = HttpRequest.reqHttp("GET",Emv.airtimeCategoryURl,"",headers);
                 }
-                List<String> catBillsName = Keys.parseJsonCnt(json, "biller");
-                List<String> catBillsCode = Keys.parseJsonCnt(json, "billerCode");
-                List<String> catImage = Keys.parseJsonCnt(json, "image");
 
-                if(catBillsName.size()>0) planDetails.clear();
+                JSONObject jsonObject = new JSONObject(json);
+                JSONArray jsonArray = jsonObject.getJSONArray("data");
+                if(jsonArray.length()>0) planDetails.clear();
+                for(int i=0; i<jsonArray.length(); i++){
+                    String catBillsName = jsonArray.getJSONObject(i).getString("biller");
+                    String catBillsCode = jsonArray.getJSONObject(i).getString("billerCode");
+                    String catImage = jsonArray.getJSONObject(i).getString("image");
 
-                for(int i=0; i<catBillsName.size(); i++) {
                     planDetails.add(new Plan(
-                            catBillsName.get(i),
-                            catBillsCode.get(i),
-                            catImage.get(i)
+                            catBillsName,
+                            catBillsCode,
+                            catImage
                     ));
+
                 }
+
                 activity.runOnUiThread(()-> internetListener.requestResponse(""+planDetails.size()));
 
-//                json = HttpRequest.reqHttp("GET",Emv.airtimeCategoryURl,"",headers);
-//                String respCode = Keys.parseJson(json,"responseCode");
-//                if(respCode.equals("00")){
-//                    SharedPref.set(activity,KEY,json);
-//                }
+                json = HttpRequest.reqHttp("GET",Emv.airtimeCategoryURl,"",headers);
+                String respCode = Keys.parseJson(json,"responseCode");
+                if(respCode.equals("00")){
+                    SharedPref.set(activity,KEY,json);
+                }
             }
             catch (Exception e) {
                 e.printStackTrace();

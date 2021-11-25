@@ -150,7 +150,7 @@ public class TransactionActivity extends AppCompatActivity {
                             ElectricityModel model = new ElectricityModel();
                             String token = Keys.parseJson(response, "rechargeToken");
                             if(token.isEmpty() || token == null){
-                                model.setToken("No Token required for Postpaid");
+                                model.setToken("");
                             }
                             model.setToken(token);
                         }

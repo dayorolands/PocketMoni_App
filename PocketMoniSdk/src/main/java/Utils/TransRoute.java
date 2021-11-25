@@ -2,6 +2,10 @@ package Utils;
 
 import android.content.Context;
 import android.util.Log;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.List;
 
 public class TransRoute {
@@ -47,15 +51,18 @@ public class TransRoute {
             amount = amount.replace(",", "");
             String resp = SharedPref.get(c,"routeResp", "");
 
-            List<String> processorVal = Keys.parseJsonCnt(resp, "processor");
-            List<String> minVal = Keys.parseJsonCnt(resp, "min");
-            List<String> maxVal = Keys.parseJsonCnt(resp, "max");
-            for(int i=0; i<processorVal.size(); i++){
-                double min = Double.parseDouble(minVal.get(i));
-                double max = Double.parseDouble(maxVal.get(i));
+            JSONObject jsonObject = new JSONObject(resp);
+            JSONArray jsonArray = jsonObject.getJSONObject("data").getJSONArray("routes");
+            for(int i =0; i<jsonArray.length();i++){
+                String processorVal = jsonArray.getJSONObject(i).getString("processor");
+                String minVal = jsonArray.getJSONObject(i).getString("min");
+                String maxVal = jsonArray.getJSONObject(i).getString("max");
+
+                double min = Double.parseDouble(minVal);
+                double max = Double.parseDouble(maxVal);
                 double amt = Double.parseDouble(amount)/100;
                 if(amt >= min && amt <= max){
-                    Emv.environment = processorVal.get(i);
+                    Emv.environment = processorVal;
                     SharedPref.set(c, "environment", Emv.environment);
                     Log.d("Result", "Environment selected: " + Emv.environment);
                     return;

@@ -139,8 +139,8 @@ public class ElectricityReceipt {
         }else{
             try {
                 if(!model.getToken().isEmpty()){
-                    combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TOKEN:", 24, GenerateBitmap.AlignEnum.CENTER, true, false));
-                    combBitmap.addBitmap(GenerateBitmap.str2Bitmap(model.getToken(), 24, GenerateBitmap.AlignEnum.CENTER, true, false));
+                    combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TOKEN:", 30, GenerateBitmap.AlignEnum.CENTER, true, true));
+                    combBitmap.addBitmap(GenerateBitmap.str2Bitmap(model.getToken(), 30, GenerateBitmap.AlignEnum.CENTER, true, true));
                 }
             }catch(Exception e){
                 e.printStackTrace();
@@ -194,19 +194,20 @@ public class ElectricityReceipt {
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("SERVICE ADDRESS:", 22, GenerateBitmap.AlignEnum.CENTER, true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap(result[18], 20, GenerateBitmap.AlignEnum.CENTER, true, false));
-        //combBitmap.addBitmap(GenerateBitmap.str2Bitmap("", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
+        combBitmap.addBitmap(GenerateBitmap.str2Bitmap("", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
         if(!result[7].equals("00")){
             combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TRANSACTION DECLINED", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
         }else{
             try {
                 if(!result[20].isEmpty()){
-                    combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TOKEN", 24, GenerateBitmap.AlignEnum.CENTER, true, false));
-                    combBitmap.addBitmap(GenerateBitmap.str2Bitmap(result[20], 24, GenerateBitmap.AlignEnum.CENTER, true, false));
+                    combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TOKEN", 30, GenerateBitmap.AlignEnum.CENTER, true, true));
+                    combBitmap.addBitmap(GenerateBitmap.str2Bitmap(result[20], 30, GenerateBitmap.AlignEnum.CENTER, true, true));
                 }
             }catch(Exception e){
                 e.printStackTrace();
-            }finally {
-                combBitmap.addBitmap(GenerateBitmap.str2Bitmap(result[17], 22, GenerateBitmap.AlignEnum.CENTER, true, false));
+            }
+            finally {
+                combBitmap.addBitmap(GenerateBitmap.str2Bitmap(result[17], 24, GenerateBitmap.AlignEnum.CENTER, true, false));
             }
         }
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap(result[5],20, GenerateBitmap.AlignEnum.CENTER, true, false)); //RESPONSE MESSAGE

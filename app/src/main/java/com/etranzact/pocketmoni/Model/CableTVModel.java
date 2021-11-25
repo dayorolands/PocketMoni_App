@@ -3,6 +3,9 @@ package com.etranzact.pocketmoni.Model;
 import android.app.Activity;
 import android.util.Log;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -308,30 +311,33 @@ public class CableTVModel {
                 if(json.isEmpty()){
                     json = HttpRequest.reqHttp("GET",Emv.cableTvCategoryUrl,"",headers);
                 }
-                List<String> catId = Keys.parseJsonCnt(json, "id");
-                List<String> catBillsName = Keys.parseJsonCnt(json, "billerName");
-                List<String> catBillsCode = Keys.parseJsonCnt(json, "billerCode");
-                List<String> catDesc = Keys.parseJsonCnt(json, "description");
-                List<String> catImage = Keys.parseJsonCnt(json, "image");
 
-                if(catId.size()>0) planDetails.clear();
+                JSONObject jsonObject = new JSONObject(json);
+                JSONArray jsonArray = jsonObject.getJSONArray("data");
+                if(jsonArray.length()>0) planDetails.clear();
+                for(int i =0; i < jsonArray.length(); i++){
+                    String catId = jsonArray.getJSONObject(i).getString("id");
+                    String catBillsName = jsonArray.getJSONObject(i).getString("billerName");
+                    String catBillsCode = jsonArray.getJSONObject(i).getString("billerCode");
+                    String catDesc = jsonArray.getJSONObject(i).getString("description");
+                    String catImage = jsonArray.getJSONObject(i).getString("image");
 
-                for(int i=0; i<catId.size(); i++) {
                     planDetails.add(new Plan(
-                            catId.get(i),
-                            catBillsName.get(i),
-                            catBillsCode.get(i),
-                            catDesc.get(i),
-                            catImage.get(i)
+                            catId,
+                            catBillsName,
+                            catBillsCode,
+                            catDesc,
+                            catImage
                     ));
                 }
+
                 activity.runOnUiThread(()-> internetListener.requestResponse(""+planDetails.size()));
 
-//                json = HttpRequest.reqHttp("GET",Emv.cableTvCategoryUrl,"",headers);
-//                String respCode = Keys.parseJson(json,"responseCode");
-//                if(respCode.equals("00")){
-//                    SharedPref.set(activity,KEY,json);
-//                }
+                json = HttpRequest.reqHttp("GET",Emv.cableTvCategoryUrl,"",headers);
+                String respCode = Keys.parseJson(json,"responseCode");
+                if(respCode.equals("00")){
+                    SharedPref.set(activity,KEY,json);
+                }
             }
             catch (Exception e) {
                 e.printStackTrace();

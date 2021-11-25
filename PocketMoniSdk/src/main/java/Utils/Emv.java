@@ -1557,56 +1557,60 @@ public class Emv {
             accessToken = SharedPref.get(activity, "accesstoken", "");
             sessionKey = SharedPref.get(activity, "sessionkey", "");
             pinKey = SharedPref.get(activity, "pinkey", "");
-        } catch (Exception ex) {
+
+
+            //Loading PDOL list (All items that may be required for PDOL, must be added here)
+            DefaultpdolCdol.add(AmountAuthorized);
+            DefaultpdolCdol.add(TerminalCountryCode);
+            DefaultpdolCdol.add(TerminalCurrencyCode);
+            DefaultpdolCdol.add(TerminalCapability);
+            DefaultpdolCdol.add(ExtendedTerminalCapability);
+            DefaultpdolCdol.add(TerminalRiskManagement);
+            DefaultpdolCdol.add(TerminalType);
+            DefaultpdolCdol.add(ExtendedTerminalCapability2);
+            DefaultpdolCdol.add(TerminalTransQualifiers);
+            DefaultpdolCdol.add(AmountOther);
+            DefaultpdolCdol.add(TVR);
+            DefaultpdolCdol.add(TerminalCompatibilityIndicator);
+            DefaultpdolCdol.add(TransactionType);
+            DefaultpdolCdol.add(TransactionDate);
+            DefaultpdolCdol.add(UnpredictableNumber);
+            DefaultpdolCdol.add(CardVerificationResult);
+            DefaultpdolCdol.add(DataAuthCode);
+            DefaultpdolCdol.add(TransactionTime);
+            DefaultpdolCdol.add(TerminalRiskManagementData);
+
+            //Get AIDS from emv.xml
+            StoredAids = Keys.getStoredAid(activity);
+
+            //Generate Unpredicatable number to use for the runtime;
+            String unpredictNum = Keys.genUnpredictableNum();
+            DefaultpdolCdol.add("9F37|" + unpredictNum);
+            DefaultpdolCdol.add("9F6A|" + unpredictNum);
+            DefaultpdolCdol.add("DF8301|" + unpredictNum);
+            setEmv("DF8301", unpredictNum);
+            setEmv("9F37", unpredictNum);
+            setEmv("9F6A", unpredictNum);
+            setEmv("9F33", TerminalCapability.split("\\|")[1]);
+            TSI = "9B|0000";
+            TVR = "95|0000000000";
+            posEntryMode = "051";
+            pinblock = "";
+            ksn = "";
+            terminalPin = "";
+
+            for (String readtag : emvtaglist) {
+                String[] TagVal = readtag.split("\\|");
+                Emv emv = new Emv();
+                emv.tag = TagVal[0];
+                emv.value = TagVal[1];
+                Defaultemvs.add(emv);
+            }
+        }
+        catch (Exception ex) {
             ex.printStackTrace();
         }
 
-        //Loading PDOL list (All items that may be required for PDOL, must be added here)
-        DefaultpdolCdol.add(AmountAuthorized);
-        DefaultpdolCdol.add(TerminalCountryCode);
-        DefaultpdolCdol.add(TerminalCurrencyCode);
-        DefaultpdolCdol.add(TerminalCapability);
-        DefaultpdolCdol.add(ExtendedTerminalCapability);
-        DefaultpdolCdol.add(TerminalRiskManagement);
-        DefaultpdolCdol.add(TerminalType);
-        DefaultpdolCdol.add(ExtendedTerminalCapability2);
-        DefaultpdolCdol.add(TerminalTransQualifiers);
-        DefaultpdolCdol.add(AmountOther);
-        DefaultpdolCdol.add(TVR);
-        DefaultpdolCdol.add(TerminalCompatibilityIndicator);
-        DefaultpdolCdol.add(TransactionType);
-        DefaultpdolCdol.add(TransactionDate);
-        DefaultpdolCdol.add(UnpredictableNumber);
-        DefaultpdolCdol.add(CardVerificationResult);
-        DefaultpdolCdol.add(DataAuthCode);
-        DefaultpdolCdol.add(TransactionTime);
-        DefaultpdolCdol.add(TerminalRiskManagementData);
 
-        //Get AIDS from emv.xml
-        StoredAids = Keys.getStoredAid(activity);
-
-        //Generate Unpredicatable number to use for the runtime;
-        String unpredictNum = Keys.genUnpredictableNum();
-        DefaultpdolCdol.add("9F37|" + unpredictNum);
-        DefaultpdolCdol.add("9F6A|" + unpredictNum);
-        DefaultpdolCdol.add("DF8301|" + unpredictNum);
-        setEmv("DF8301", unpredictNum);
-        setEmv("9F37", unpredictNum);
-        setEmv("9F6A", unpredictNum);
-        setEmv("9F33", TerminalCapability.split("\\|")[1]);
-        TSI = "9B|0000";
-        TVR = "95|0000000000";
-        posEntryMode = "051";
-        pinblock = "";
-        ksn = "";
-        terminalPin = "";
-
-        for (String readtag : emvtaglist) {
-            String[] TagVal = readtag.split("\\|");
-            Emv emv = new Emv();
-            emv.tag = TagVal[0];
-            emv.value = TagVal[1];
-            Defaultemvs.add(emv);
-        }
     }
 }

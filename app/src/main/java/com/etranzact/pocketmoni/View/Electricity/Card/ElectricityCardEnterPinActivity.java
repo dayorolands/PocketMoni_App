@@ -55,7 +55,7 @@ public class ElectricityCardEnterPinActivity extends AppCompatActivity implement
         total = findViewById(R.id.total_id);
         payButton = findViewById(R.id.pay_btn);
         btnBack = findViewById(R.id.back_btn_id);
-        name.setText(model.getBillerName());
+        name.setText(model.getCustomerName());
         subscriptionPlan.setText(model.getMeterType());
         outstandingBal.setText(model.getOutstandingBal());
         amount.setText(getAmount());

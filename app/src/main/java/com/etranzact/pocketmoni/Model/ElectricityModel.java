@@ -6,6 +6,8 @@ import android.util.Log;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +23,7 @@ import Utils.SharedPref;
 
 public class ElectricityModel {
     private static final HashMap<String,List<Plan>> planDetails = new HashMap<>();
-    private static final String EKEY = "cat_key";
+    private static final String KEY = "cat_key";
     public final String PIN_KEY = "A8BF4C78F2EEEDB96FAF3A0655454345";
     public final String CUSTOM_PAN = "0000000000000000";
 
@@ -271,42 +273,51 @@ public class ElectricityModel {
         this.internetListener = internetCallback;
         new Thread(()->{
             try{
-                String json = SharedPref.get(activity,EKEY,"");
+                String json = SharedPref.get(activity,KEY,"");
                 HashMap<String,String> headers = new HashMap<>();
                 headers.put("Content-Type","application/json");
                 headers.put("Authorization",Emv.accessToken);
-                if(json.isEmpty() || json.contains("responseCode") || json.contains("code")){
+                String responseCode = Keys.parseJson(json, "responseCode");
+                if(!responseCode.equals("00")){
                     json = HttpRequest.reqHttp("GET",Emv.electricityCategoryUrl,"",headers);
                 }
-                //String json = "{\"PortHarcourtElectricity\":[{\"billerName\":\"PortHarcourtPrepaid\",\"billerCode\":\"phcnphe\",\"description\":\"ThisisPortHarcourtprepaidbiller\",\"meterType\":\"prepaid\",\"zone\":\"phcnphe\",\"mtype\":\"6\"},{\"billerName\":\"PortHarcourtPostpaid\",\"billerCode\":\"phcnppphe\",\"description\":\"ThisisPortHarcourtpostpaidbiller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppphe\",\"mtype\":\"3\"}],\"EkoElectricity\":[{\"billerName\":\"EkoPrepaid\",\"billerCode\":\"phcneko\",\"description\":\"Thisisekoprepaidbiller\",\"meterType\":\"prepaid\",\"zone\":\"phcneko\",\"mtype\":\"6\"},{\"billerName\":\"EkoPostpaid\",\"billerCode\":\"phcnppeko\",\"description\":\"Thisisekopostpaidbiller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppeko\",\"mtype\":\"3\"}],\"IbadanElectricity\":[{\"billerName\":\"IbadanPrepaid\",\"billerCode\":\"phcnibd\",\"description\":\"Thisisibadanprepaidbiller\",\"meterType\":\"prepaid\",\"zone\":\"phcnibd\",\"mtype\":\"6\"},{\"billerName\":\"IbadanPostpaid\",\"billerCode\":\"phcnppibd\",\"description\":\"ThisisIbadanpostpaidbiller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppibd\",\"mtype\":\"3\"}],\"AbujaElectricity\":[{\"billerName\":\"AbujaPrepaid\",\"billerCode\":\"phcnabj\",\"description\":\"Thisisabujaprepaidbiller\",\"meterType\":\"prepaid\",\"zone\":\"phcnabj\",\"mtype\":\"6\"},{\"billerName\":\"AbujaPostpaid\",\"billerCode\":\"phcnppabj\",\"description\":\"Thisisabujapostpaidbiller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppabj\",\"mtype\":\"3\"}],\"KadunaElectricity\":[{\"billerName\":\"KadunaPrePaid\",\"billerCode\":\"phcnkad\",\"description\":\"Thisiskadunaprepaidbiller\",\"meterType\":\"prepaid\",\"zone\":\"phcnkad\",\"mtype\":\"6\"},{\"billerName\":\"KadunaPostpaid\",\"billerCode\":\"phcnppkad\",\"description\":\"ThisisKadunapostpaidbiller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppkad\",\"mtype\":\"3\"}],\"KanoElectricity\":[{\"billerName\":\"KanoPrepaid\",\"billerCode\":\"phcnkan\",\"description\":\"Thisiskanoprepaidbiller\",\"meterType\":\"prepaid\",\"zone\":\"phcnkan\",\"mtype\":\"6\"},{\"billerName\":\"KanoPostpaid\",\"billerCode\":\"phcnppkan\",\"description\":\"Thisiskanopostpaidbiller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppkan\",\"mtype\":\"3\"}],\"EnuguElectricity\":[{\"billerName\":\"EnuguPrepaid\",\"billerCode\":\"phcnenu\",\"description\":\"Thisisenuguprepaidbiller\",\"meterType\":\"prepaid\",\"zone\":\"phcnenu\",\"mtype\":\"6\"},{\"billerName\":\"EnuguPostpaid\",\"billerCode\":\"phcnppenu\",\"description\":\"Thisisenugupostpaidbiller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppenu\",\"mtype\":\"3\"}],\"JosElectricity\":[{\"billerName\":\"JosPrepaid\",\"billerCode\":\"phcnjos\",\"description\":\"Thisisjosprepaidbiller\",\"meterType\":\"prepaid\",\"zone\":\"phcnjos\",\"mtype\":\"6\"},{\"billerName\":\"JosPostpaid\",\"billerCode\":\"phcnppjos\",\"description\":\"Thisisjospostpaidbiller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppjos\",\"mtype\":\"3\"}]}";
+                //String json = "{\"responseCode\":\"00\",\"responseMessage\":\"Electricity List Fetched\",\"data\":{\"Enugu Electricity|https://demo.etranzact.com/apps/pocketmonibillerlist/phcn_enugu.png\":[{\"id\":\"12\",\"billerName\":\"PHCN Enugu Prepaid\",\"billerCode\":\"phcnenu\",\"description\":\"This is phcn enugu prepaid biller\",\"meterType\":\"prepaid\",\"zone\":\"phcnenu\",\"mtype\":\"3\"},{\"id\":\"13\",\"billerName\":\"PHCN Enugu Postpaid\",\"billerCode\":\"phcnppenu\",\"description\":\"This is phcn enugu postpaid biller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppenu\",\"mtype\":\"6\"}],\"Jos Electricity|https://demo.etranzact.com/apps/pocketmonibillerlist/phcn_jos.png\":[{\"id\":\"19\",\"billerName\":\"PHCN Jos Prepaid\",\"billerCode\":\"phcnjos\",\"description\":\"This is phcn jos prepaid biller\",\"meterType\":\"prepaid\",\"zone\":\"phcnjos\",\"mtype\":\"3\"},{\"id\":\"20\",\"billerName\":\"PHCN Jos Postpaid\",\"billerCode\":\"phcnppjos\",\"description\":\"This is phcn jos postpaid biller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppjos\",\"mtype\":\"6\"}],\"Eko Electricity|https://demo.etranzact.com/apps/pocketmonibillerlist/phcn_eko.png\":[{\"id\":\"15\",\"billerName\":\"PHCN Eko Prepaid\",\"billerCode\":\"phcneko\",\"description\":\"This is phcn eko prepaid biller\",\"meterType\":\"prepaid\",\"zone\":\"phcneko\",\"mtype\":\"3\"},{\"id\":\"16\",\"billerName\":\"PHCN Eko Postpaid\",\"billerCode\":\"phcnppeko\",\"description\":\"This is phcn eko postpaid biller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppeko\",\"mtype\":\"6\"}],\"Ibadan Electricity|https://demo.etranzact.com/apps/pocketmonibillerlist/phcn_ibadan.png\":[{\"id\":\"25\",\"billerName\":\"PHCN Ibadan Prepaid\",\"billerCode\":\"phcnibd\",\"description\":\"This is phcn ibadan prepaid biller\",\"meterType\":\"prepaid\",\"zone\":\"phcnibd\",\"mtype\":\"3\"},{\"id\":\"26\",\"billerName\":\"PHCN Ibadan Postpaid\",\"billerCode\":\"phcnppibd\",\"description\":\"This is phcn Ibadan postpaid biller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppibd\",\"mtype\":\"6\"}],\"Kano Electricity|https://demo.etranzact.com/apps/pocketmonibillerlist/phcn_kano.png\":[{\"id\":\"21\",\"billerName\":\"PHCN Kano Prepaid\",\"billerCode\":\"phcnkan\",\"description\":\"This is phcn kano prepaid biller\",\"meterType\":\"prepaid\",\"zone\":\"phcnkan\",\"mtype\":\"3\"},{\"id\":\"22\",\"billerName\":\"PHCN Kano Postpaid\",\"billerCode\":\"phcnppkan\",\"description\":\"This is phcn kano postpaid biller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppkan\",\"mtype\":\"6\"}],\"PortHarcourt Electricity|https://demo.etranzact.com/apps/pocketmonibillerlist/phcn_portharcourt.png\":[{\"id\":\"29\",\"billerName\":\"PHCN PortHarcourt Prepaid\",\"billerCode\":\"phcnphe\",\"description\":\"This is phcn PortHarcourt prepaid biller\",\"meterType\":\"prepaid\",\"zone\":\"phcnphe\",\"mtype\":\"3\"},{\"id\":\"30\",\"billerName\":\"PHCN PortHarcourt Postpaid\",\"billerCode\":\"phcnppphe\",\"description\":\"This is phcn PortHarcourt postpaid biller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppphe\",\"mtype\":\"6\"}],\"Abuja Electricity|https://demo.etranzact.com/apps/pocketmonibillerlist/phcn_abuja.png\":[{\"id\":\"23\",\"billerName\":\"PHCN Abuja Prepaid\",\"billerCode\":\"phcnabj\",\"description\":\"This is phcn abuja prepaid biller\",\"meterType\":\"prepaid\",\"zone\":\"phcnabj\",\"mtype\":\"3\"},{\"id\":\"24\",\"billerName\":\"PHCN Abuja Postpaid\",\"billerCode\":\"phcnppabj\",\"description\":\"This is phcn abuja postpaid biller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppabj\",\"mtype\":\"6\"}],\"Kaduna Electricity|https://demo.etranzact.com/apps/pocketmonibillerlist/phcn_kaduna.png\":[{\"id\":\"27\",\"billerName\":\"PHCN Kaduna PrePaid\",\"billerCode\":\"phcnkad\",\"description\":\"This is phcn kaduna prepaid biller\",\"meterType\":\"prepaid\",\"zone\":\"phcnkad\",\"mtype\":\"3\"},{\"id\":\"28\",\"billerName\":\"PHCN Kaduna Postpaid\",\"billerCode\":\"phcnppkad\",\"description\":\"This is phcn Kaduna postpaid biller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppkad\",\"mtype\":\"6\"}]}}";
                 //Convert Json to Map
-                HashMap<String, Object> map = new ObjectMapper().readValue(json, new TypeReference<Map<String, Object>>(){});
-                if(map.size()>0) planDetails.clear();
-                for(Map.Entry<String,Object> entry : map.entrySet()) {
-                    String key = entry.getKey();
-                    Object value = entry.getValue();
-                    ArrayList arrayList = ((ArrayList) value);
-                    List<Plan> eModel = new ArrayList<>();
-                    for (int i = 0; i < arrayList.size(); i++) {
-                        String id = ((HashMap<String, String>) arrayList.get(i)).get("id");
-                        String billerName = ((HashMap<String, String>) arrayList.get(i)).get("billerName");
-                        String billerCode = ((HashMap<String, String>) arrayList.get(i)).get("billerCode");
-                        String description = ((HashMap<String, String>) arrayList.get(i)).get("description");
-                        String meterType = ((HashMap<String, String>) arrayList.get(i)).get("meterType");
-                        String zone = ((HashMap<String, String>) arrayList.get(i)).get("zone");
-                        String mtype = ((HashMap<String, String>) arrayList.get(i)).get("mtype");
-                        eModel.add(new Plan(id, billerName, billerCode, description, meterType, zone, mtype));
+                JSONObject jsonObject = new JSONObject(json);
+                responseCode = jsonObject.getString("responseCode");
+                if (responseCode.equals("00")) {
+                    //Convert Json to Map
+                    String data = jsonObject.getJSONObject("data").toString();
+                    HashMap<String, Object> map = new ObjectMapper().readValue(data, new TypeReference<Map<String, Object>>() {
+                    });
+                    if(map.size()>0) planDetails.clear();
+                    for (Map.Entry<String, Object> entry : map.entrySet()) {
+                        String key = entry.getKey();
+                        Object value = entry.getValue();
+                        ArrayList arrayList = ((ArrayList) value);
+                        List<ElectricityModel.Plan> eModel = new ArrayList<>();
+                        for (int i = 0; i < arrayList.size(); i++) {
+                            String id = ((HashMap<String, String>) arrayList.get(i)).get("id");
+                            String billerName = ((HashMap<String, String>) arrayList.get(i)).get("billerName");
+                            String billerCode = ((HashMap<String, String>) arrayList.get(i)).get("billerCode");
+                            String description = ((HashMap<String, String>) arrayList.get(i)).get("description");
+                            String meterType = ((HashMap<String, String>) arrayList.get(i)).get("meterType");
+                            String zone = ((HashMap<String, String>) arrayList.get(i)).get("zone");
+                            String mtype = ((HashMap<String, String>) arrayList.get(i)).get("mtype");
+                            eModel.add(new ElectricityModel.Plan(id, billerName, billerCode, description, meterType, zone, mtype));
+                        }
+                        planDetails.put(key, eModel);
                     }
-                    planDetails.put(key,eModel);
                 }
                 activity.runOnUiThread(()->{
                     internetListener.requestResponse(""+planDetails.size());
                 });
 
-//                json = HttpRequest.reqHttp("GET",Emv.electricityCategoryUrl,"",headers);
-//                if((!json.isEmpty()) && (!json.contains("responseCode"))){
-//                    SharedPref.set(activity,EKEY,json);
-//                }
+                json = HttpRequest.reqHttp("GET",Emv.electricityCategoryUrl,"",headers);
+                responseCode = Keys.parseJson(json, "responseCode");
+                if(responseCode.equals("00")){
+                    SharedPref.set(activity,KEY,json);
+                }
             }
             catch (Exception e) {
                 e.printStackTrace();
