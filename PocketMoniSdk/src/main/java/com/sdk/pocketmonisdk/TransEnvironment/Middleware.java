@@ -28,7 +28,7 @@ public class Middleware {
         String resp = SharedPref.get(activity,"routeResp", "");
         String respCode = Keys.parseJson(result, "responseCode");
         if(respCode.equals("00")){
-            //Here am checking to see if the response that is stored in shared preference is same as response returned when the
+            //Here I am checking to see if the response that is stored in shared preference is same as response returned when the
             //terminal automatically checks for the route to use. If the route is different, the route from TMS overrides the
             //route set by the terminal due to server downtime on one route.
             if(!resp.isEmpty()){

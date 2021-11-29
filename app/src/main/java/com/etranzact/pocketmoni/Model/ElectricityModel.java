@@ -27,7 +27,7 @@ public class ElectricityModel {
     public final String PIN_KEY = "A8BF4C78F2EEEDB96FAF3A0655454345";
     public final String CUSTOM_PAN = "0000000000000000";
 
-    private static String billerName, id, convenientFee, billerCode, description,meterType, zone, mtype, sessionCategory, customerId, customerName,outstandingBal,amount,pin,paymentRef,address,token;
+    private static String billerName, minimumAmount, id, convenientFee, billerCode, description,meterType, zone, mtype, sessionCategory, customerId, customerName,outstandingBal,amount,pin,paymentRef,address,token;
     Activity activity;
     private String data = "";
     public ElectricityModel(Activity activity, ICategoryResponse internetCallbacks){
@@ -91,7 +91,13 @@ public class ElectricityModel {
     public String getPaymentRef(){return paymentRef;}
     public String getAddress(){return address;}
     public String getToken(){return token;}
+    public String getMinimumAmount() {
+        return minimumAmount;
+    }
 
+    public void setMinimumAmount(String minimumAmount) {
+        ElectricityModel.minimumAmount = minimumAmount;
+    }
     public void setId(String id) { ElectricityModel.id = id; }
     public void setBillerName(String billerName) { ElectricityModel.billerName = billerName; }
     public void setBillerCode(String billerCode) { ElectricityModel.billerCode = billerCode; }
@@ -130,7 +136,7 @@ public class ElectricityModel {
             }
         }
         //Index 0 for prepaid and Index 1 for prepaid
-        return new Plan("","","","","","","");
+        return new Plan("","","","","","","", "" );
     }
 
     private String depositData(Activity activity){
@@ -280,6 +286,7 @@ public class ElectricityModel {
                 String responseCode = Keys.parseJson(json, "responseCode");
                 if(!responseCode.equals("00")){
                     json = HttpRequest.reqHttp("GET",Emv.electricityCategoryUrl,"",headers);
+                    Log.d("Result", "The response from the server is " + json);
                 }
                 //String json = "{\"responseCode\":\"00\",\"responseMessage\":\"Electricity List Fetched\",\"data\":{\"Enugu Electricity|https://demo.etranzact.com/apps/pocketmonibillerlist/phcn_enugu.png\":[{\"id\":\"12\",\"billerName\":\"PHCN Enugu Prepaid\",\"billerCode\":\"phcnenu\",\"description\":\"This is phcn enugu prepaid biller\",\"meterType\":\"prepaid\",\"zone\":\"phcnenu\",\"mtype\":\"3\"},{\"id\":\"13\",\"billerName\":\"PHCN Enugu Postpaid\",\"billerCode\":\"phcnppenu\",\"description\":\"This is phcn enugu postpaid biller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppenu\",\"mtype\":\"6\"}],\"Jos Electricity|https://demo.etranzact.com/apps/pocketmonibillerlist/phcn_jos.png\":[{\"id\":\"19\",\"billerName\":\"PHCN Jos Prepaid\",\"billerCode\":\"phcnjos\",\"description\":\"This is phcn jos prepaid biller\",\"meterType\":\"prepaid\",\"zone\":\"phcnjos\",\"mtype\":\"3\"},{\"id\":\"20\",\"billerName\":\"PHCN Jos Postpaid\",\"billerCode\":\"phcnppjos\",\"description\":\"This is phcn jos postpaid biller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppjos\",\"mtype\":\"6\"}],\"Eko Electricity|https://demo.etranzact.com/apps/pocketmonibillerlist/phcn_eko.png\":[{\"id\":\"15\",\"billerName\":\"PHCN Eko Prepaid\",\"billerCode\":\"phcneko\",\"description\":\"This is phcn eko prepaid biller\",\"meterType\":\"prepaid\",\"zone\":\"phcneko\",\"mtype\":\"3\"},{\"id\":\"16\",\"billerName\":\"PHCN Eko Postpaid\",\"billerCode\":\"phcnppeko\",\"description\":\"This is phcn eko postpaid biller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppeko\",\"mtype\":\"6\"}],\"Ibadan Electricity|https://demo.etranzact.com/apps/pocketmonibillerlist/phcn_ibadan.png\":[{\"id\":\"25\",\"billerName\":\"PHCN Ibadan Prepaid\",\"billerCode\":\"phcnibd\",\"description\":\"This is phcn ibadan prepaid biller\",\"meterType\":\"prepaid\",\"zone\":\"phcnibd\",\"mtype\":\"3\"},{\"id\":\"26\",\"billerName\":\"PHCN Ibadan Postpaid\",\"billerCode\":\"phcnppibd\",\"description\":\"This is phcn Ibadan postpaid biller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppibd\",\"mtype\":\"6\"}],\"Kano Electricity|https://demo.etranzact.com/apps/pocketmonibillerlist/phcn_kano.png\":[{\"id\":\"21\",\"billerName\":\"PHCN Kano Prepaid\",\"billerCode\":\"phcnkan\",\"description\":\"This is phcn kano prepaid biller\",\"meterType\":\"prepaid\",\"zone\":\"phcnkan\",\"mtype\":\"3\"},{\"id\":\"22\",\"billerName\":\"PHCN Kano Postpaid\",\"billerCode\":\"phcnppkan\",\"description\":\"This is phcn kano postpaid biller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppkan\",\"mtype\":\"6\"}],\"PortHarcourt Electricity|https://demo.etranzact.com/apps/pocketmonibillerlist/phcn_portharcourt.png\":[{\"id\":\"29\",\"billerName\":\"PHCN PortHarcourt Prepaid\",\"billerCode\":\"phcnphe\",\"description\":\"This is phcn PortHarcourt prepaid biller\",\"meterType\":\"prepaid\",\"zone\":\"phcnphe\",\"mtype\":\"3\"},{\"id\":\"30\",\"billerName\":\"PHCN PortHarcourt Postpaid\",\"billerCode\":\"phcnppphe\",\"description\":\"This is phcn PortHarcourt postpaid biller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppphe\",\"mtype\":\"6\"}],\"Abuja Electricity|https://demo.etranzact.com/apps/pocketmonibillerlist/phcn_abuja.png\":[{\"id\":\"23\",\"billerName\":\"PHCN Abuja Prepaid\",\"billerCode\":\"phcnabj\",\"description\":\"This is phcn abuja prepaid biller\",\"meterType\":\"prepaid\",\"zone\":\"phcnabj\",\"mtype\":\"3\"},{\"id\":\"24\",\"billerName\":\"PHCN Abuja Postpaid\",\"billerCode\":\"phcnppabj\",\"description\":\"This is phcn abuja postpaid biller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppabj\",\"mtype\":\"6\"}],\"Kaduna Electricity|https://demo.etranzact.com/apps/pocketmonibillerlist/phcn_kaduna.png\":[{\"id\":\"27\",\"billerName\":\"PHCN Kaduna PrePaid\",\"billerCode\":\"phcnkad\",\"description\":\"This is phcn kaduna prepaid biller\",\"meterType\":\"prepaid\",\"zone\":\"phcnkad\",\"mtype\":\"3\"},{\"id\":\"28\",\"billerName\":\"PHCN Kaduna Postpaid\",\"billerCode\":\"phcnppkad\",\"description\":\"This is phcn Kaduna postpaid biller\",\"meterType\":\"postpaid\",\"zone\":\"phcnppkad\",\"mtype\":\"6\"}]}}";
                 //Convert Json to Map
@@ -304,7 +311,9 @@ public class ElectricityModel {
                             String meterType = ((HashMap<String, String>) arrayList.get(i)).get("meterType");
                             String zone = ((HashMap<String, String>) arrayList.get(i)).get("zone");
                             String mtype = ((HashMap<String, String>) arrayList.get(i)).get("mtype");
-                            eModel.add(new ElectricityModel.Plan(id, billerName, billerCode, description, meterType, zone, mtype));
+                            Integer minimumAmount = ((HashMap<Integer, Integer>) arrayList.get(i)).get("minAmount");
+                            Log.d("Result", "The minimum amount for this " +billerName + " transaction is " + minimumAmount);
+                            eModel.add(new ElectricityModel.Plan(id, billerName, billerCode, description, meterType, zone, mtype, String.valueOf(minimumAmount)));
                         }
                         planDetails.put(key, eModel);
                     }
@@ -336,8 +345,8 @@ public class ElectricityModel {
 
     //The class that holds the plan structure
     public static class Plan{
-        String billerName, billerCode, id, description, meterType, zone, mtype;
-        public Plan(String id, String billerName, String billerCode, String description, String meterType, String zone, String mtype) {
+        String billerName, billerCode, id, description, meterType, zone, mtype, minimumAmount;
+        public Plan(String id, String billerName, String billerCode, String description, String meterType, String zone, String mtype, String minimumAmount) {
             this.id = id;
             this.billerName = billerName;
             this.billerCode = billerCode;
@@ -345,6 +354,7 @@ public class ElectricityModel {
             this.meterType = meterType;
             this.zone = zone;
             this.mtype = mtype;
+            this.minimumAmount = minimumAmount;
         }
 
         public String getId() {
@@ -373,6 +383,10 @@ public class ElectricityModel {
 
         public String getMtype() {
             return mtype;
+        }
+
+        public String getMinimumAmount() {
+            return minimumAmount;
         }
     }
 }

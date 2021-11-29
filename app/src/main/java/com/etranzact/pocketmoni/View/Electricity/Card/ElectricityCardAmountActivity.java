@@ -50,6 +50,7 @@ public class ElectricityCardAmountActivity extends AppCompatActivity implements 
     TextView title, acctName;
     double maxCvAmount = 0;
     double minCvAmount = 0;
+    double minimumAmount = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -96,6 +97,7 @@ public class ElectricityCardAmountActivity extends AppCompatActivity implements 
                 model.setMeterType(details.getMeterType());
                 model.setMtype(details.getMtype());
                 model.setZone(details.getZone());
+                model.setMinimumAmount(String.valueOf(details.getMinimumAmount()));
             }else{
                 amountAndMeterNumber.setVisibility(View.INVISIBLE);
             }
@@ -128,7 +130,6 @@ public class ElectricityCardAmountActivity extends AppCompatActivity implements 
 
         @Override
         public void afterTextChanged(Editable s) {
-
         }
     };
 
@@ -170,6 +171,7 @@ public class ElectricityCardAmountActivity extends AppCompatActivity implements 
     public void onClick(View v) {
         String amt = amount.getText().toString().replace(",","");
         String cvAmt = convenientFee.getText().toString().replace(",", "");
+        minimumAmount = Double.parseDouble(model.getMinimumAmount());
         if (cvAmt.equals("") || cvAmt.equals("0.00")){
             cvAmt = "0";
         }
@@ -183,6 +185,12 @@ public class ElectricityCardAmountActivity extends AppCompatActivity implements 
 
         if(amt.equals("") || amt.equals("0.00")){
             Toast.makeText(ElectricityCardAmountActivity.this, "Invalid Amount", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(Double.parseDouble(amt) < minimumAmount){
+            Toast.makeText(ElectricityCardAmountActivity.this, "Transaction amount cannot be less than " + minimumAmount, Toast.LENGTH_SHORT).show();
+            amount.requestFocus();
             return;
         }
 
