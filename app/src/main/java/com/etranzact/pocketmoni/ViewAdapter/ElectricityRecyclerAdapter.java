@@ -18,6 +18,7 @@ import com.etranzact.pocketmoni.Dialogs.DiscosSelectionDialog;
 import com.etranzact.pocketmoni.Model.ElectricityModel;
 import com.etranzact.pocketmoni.R;
 import com.etranzact.pocketmoni.View.Electricity.ElectricityPaymentMethodActivity;
+import com.etranzact.pocketmoni.View.SettingsActivity.TransactionHistoryActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -82,7 +83,8 @@ public class ElectricityRecyclerAdapter extends RecyclerView.Adapter<Electricity
 
     View.OnClickListener onDialogButtonClicked = (view)->{
         if(view.getId() == R.id.retrieve_token_id){
-            Toast.makeText(activity, "", Toast.LENGTH_SHORT).show();
+            activity.startActivity(new Intent(activity, TransactionHistoryActivity.class));
+            //Toast.makeText(activity, "", Toast.LENGTH_SHORT).show();
         }else if(view.getId() == R.id.make_payment_id){
             //activity.startActivity(new Intent(activity, ElectricityCashAmountActivity.class));
             activity.startActivity(new Intent(activity, ElectricityPaymentMethodActivity.class));
