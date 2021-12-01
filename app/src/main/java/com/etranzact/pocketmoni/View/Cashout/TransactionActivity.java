@@ -153,6 +153,8 @@ public class TransactionActivity extends AppCompatActivity {
                                 model.setToken("");
                             }
                             model.setToken(token);
+                            String paymentRef = Keys.parseJson(response, "paymentRef");
+                            model.setPaymentRef(paymentRef);
                         }
                         Emv.setEmv("8A", Keys.asciiToHex(respCode));
                         ShowApproved();
