@@ -1512,7 +1512,9 @@ public class Emv {
             terminalId = SharedPref.get(activity, "terminalid", "");
             merchantId = SharedPref.get(activity, "merchantid", "");
             ///Todo remember to change to production url
-            String baseUrl = "https://demo.etranzact.com"; //SharedPref.get(activity, "baseurl", "https://www.etranzact.net");
+            //String baseUrl = "https://demo.etranzact.com";
+            String baseUrl = "https://www.etranzact.net";
+            //SharedPref.get(activity, "baseurl", "https://www.etranzact.net");
             transUrl = baseUrl + "/tms-service/tms/transact";
             acctValidationUrl = baseUrl + "/tms-service/tms/account-validation";
             electricityCategoryUrl = baseUrl + "/tms-service/tms/bill/electricity/getCategories?serialNo="+serialNumber+"&terminalId="+terminalId+"";
