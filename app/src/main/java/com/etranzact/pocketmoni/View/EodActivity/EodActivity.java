@@ -94,6 +94,7 @@ public class EodActivity extends AppCompatActivity {
 
     private void getRecyclerData() {
         recycler.clear();
+        if(dateList.getAdapter().getCount() == 0) return;
         dateSelected = dateList.getSelectedItem().toString();
         typeSelected = transList.getSelectedItem().toString();
         TransDB db = new TransDB(this);
