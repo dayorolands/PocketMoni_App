@@ -310,6 +310,7 @@ public class CableTVModel {
                 headers.put("Authorization",Emv.accessToken);
                 if(json.isEmpty()){
                     json = HttpRequest.reqHttp("GET",Emv.cableTvCategoryUrl,"",headers);
+                    Log.d("Result:", "Request Response: " + json);
                 }
 
                 JSONObject jsonObject = new JSONObject(json);
@@ -334,6 +335,7 @@ public class CableTVModel {
                 activity.runOnUiThread(()-> internetListener.requestResponse(""+planDetails.size()));
 
                 json = HttpRequest.reqHttp("GET",Emv.cableTvCategoryUrl,"",headers);
+                Log.d("Result:", "Request Response" + json);
                 String respCode = Keys.parseJson(json,"responseCode");
                 if(respCode.equals("00")){
                     SharedPref.set(activity,KEY,json);
