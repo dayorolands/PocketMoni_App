@@ -64,9 +64,14 @@ public class SplashActivity extends AppCompatActivity {
                 isTokenSuccessful = true;
                 Intent intent = new Intent(SplashActivity.this, WelcomeActivity.class);
                 startActivity(intent);
-                new ElectricityModel(this,(resp)-> Log.d("Result", "Electricity Discos loaded"));
-                new CableTVModel(this,(resp)-> Log.d("Result", "CableTV Discos loaded"));
-                new AirtimeModel(this,(resp)-> Log.d("Result", "AirTime Discos loaded"));
+                try {
+                    new ElectricityModel(this,(resp)-> Log.d("Result", "Electricity Discos loaded"));
+                    new CableTVModel(this,(resp)-> Log.d("Result", "CableTV Discos loaded"));
+                    new AirtimeModel(this,(resp)-> Log.d("Result", "AirTime Discos loaded"));
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
             }else if(msg.what == 1){
                 isTokenSuccessful = false;
                 Toast.makeText(SplashActivity.this,"No internet access", Toast.LENGTH_SHORT).show();

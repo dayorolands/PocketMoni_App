@@ -10,6 +10,7 @@ import android.os.Binder;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.core.content.FileProvider;
@@ -149,19 +150,32 @@ public class ApplicationServices extends Service {
                 db.close();
                 return;
             }
+
             activity.runOnUiThread(()->{
                 Toast.makeText(ApplicationServices.this, "Sending Notification", Toast.LENGTH_SHORT).show();
             });
-            String data = notificationData.get(0).getData();
-            String time = notificationData.get(0).getTime();
-            data = Keys.removeSpecialCharacters(data);
-            String result = Middleware.httpRequest(data,"POST", Emv.notificationURL);
-            String respCode = Keys.parseJson(result, "responseCode");
-            if(respCode.equals("00")){
-                db.deleteData(time);
+
+            for(int i=0; i<notificationData.size(); i++){
+                int finalI = i;
+                new Thread(()->{
+                    String data = notificationData.get(finalI).getData();
+                    String time = notificationData.get(finalI).getTime();
+                    Log.d("Result","Notification Request " + data);
+                    data = Keys.removeSpecialCharacters(data);
+                    String result = Middleware.httpRequest(data,"POST", Emv.notificationURL);
+                    String respCode = Keys.parseJson(result, "responseCode");
+                    Log.d("Result","Notification Response " + result);
+                    if(respCode.equals("00")){
+                        db.deleteData(time);
+                    }
+                    if(finalI == notificationData.size()-1){
+                        Log.d("Result","Db closed " + finalI);
+                        db.close();
+                    }
+                }).start();
             }
-            db.close();
         }catch (Exception e){
+            Log.d("Result","Notification exception " + e.getMessage());
             e.printStackTrace();
         }
     }

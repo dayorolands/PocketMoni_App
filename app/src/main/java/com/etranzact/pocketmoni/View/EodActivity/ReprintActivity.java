@@ -65,8 +65,6 @@ public class ReprintActivity extends AppCompatActivity {
         cardNo = findViewById(R.id.card_no);
         transType = findViewById(R.id.trans_type);
         cardType = findViewById(R.id.card_type);
-        meterNo = findViewById(R.id.trans_meter_no);
-        billName = findViewById(R.id.bill_name_id);
         amount = findViewById(R.id.trans_amt);
         transRrn = findViewById(R.id.trans_rrn);
         SetParameters();
@@ -98,8 +96,6 @@ public class ReprintActivity extends AppCompatActivity {
         cardType.setText(result[12]);
         transRrn.setText(result[8]);
         amount.setText(result[6]);
-        meterNo.setText(result[14]);
-        billName.setText(result[15]);
         requeryPayload = result[result.length-1];
         //amount 6
         //response code 7
