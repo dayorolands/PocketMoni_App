@@ -234,7 +234,7 @@ public class AirtimeModel {
                 activity.runOnUiThread(()-> internetListener.requestResponse(""+planDetails.size()));
 
                 json = HttpRequest.reqHttp("GET",Emv.airtimeCategoryURl,"",headers);
-                Log.d("Result:", "Request Response: " + json);
+                //Log.d("Result:", "Request Response: " + json);
                 String respCode = Keys.parseJson(json,"responseCode");
                 if(respCode.equals("00")){
                     SharedPref.set(activity,KEY,json);
