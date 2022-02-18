@@ -151,7 +151,7 @@ public class FailedActivity extends AppCompatActivity {
                 if(field39.isEmpty()) field39 = Keys.parseJson(response, "responseCode");
 
                 //Route transaction to NIBSS when response code is 91 3 times consecutively
-                TransRoute.setRouteRespCode(FailedActivity.this, field39);
+                //TransRoute.setRouteRespCode(FailedActivity.this, field39);
                 //Response code 00 signifies approved
                 if (field39.equals("00")) {
                     Emv.responseCode = field39;

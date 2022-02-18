@@ -96,7 +96,7 @@ public class TransactionActivity extends AppCompatActivity {
                         Emv.parseResponse(field55, ""); //Parse field 55 and get EMV data;
 
                     //Route transaction to TMS when response code is 91 3 times consecutively
-                    TransRoute.setRouteRespCode(TransactionActivity.this, respCode);
+                    //TransRoute.setRouteRespCode(TransactionActivity.this, respCode);
 
                     //Response code 00 signifies approved
                     if (respCode.equals("00")) {
@@ -135,7 +135,7 @@ public class TransactionActivity extends AppCompatActivity {
                         Emv.parseResponse(field55, ""); //Parse field 55 and get EMV data;
 
                     //Route transaction to NIBSS when response code is 91 3 times consecutively
-                    TransRoute.setRouteRespCode(TransactionActivity.this, respCode);
+                    //TransRoute.setRouteRespCode(TransactionActivity.this, respCode);
                     //Response code 00 signifies approved
                     if (respCode.equals("00")) {
                         Emv.responseCode = respCode;
