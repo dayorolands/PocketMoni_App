@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.RemoteException;
@@ -19,6 +20,9 @@ import com.horizonpay.smartpossdk.aidl.printer.AidlPrinterListener;
 import com.horizonpay.smartpossdk.aidl.printer.IAidlPrinter;
 import com.horizonpay.smartpossdk.data.PrinterConst;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Locale;
 
@@ -148,9 +152,28 @@ public class MyPrinter {
 
     private static Bitmap printBitmap() {
         CombBitmap combBitmap = new CombBitmap();
+        ElectricityModel electricityModel = new ElectricityModel();
         Bitmap bitmap;
-        bitmap = getImageFromRawFolder(activity.getApplicationContext());
-        combBitmap.addBitmap(bitmap);
+        //Display the logo here
+        if(Emv.transactionType == TransType.ELECTRICITY){
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                String filename = electricityModel.getSessionCategory() + ".jpg";
+                File electricityFile = new File(activity.getExternalFilesDir(null).getAbsolutePath() + "/Android/data" + activity.getApplicationContext().getPackageName() + "/ElectricityLogos" + "/" + filename);
+                Log.d("Result", "Here I want to check the path the terminal is displaying " + electricityFile);
+                try {
+                    FileInputStream fileInputStream = new FileInputStream(electricityFile);
+                    bitmap = BitmapFactory.decodeStream(fileInputStream);
+                    combBitmap.addBitmap(GenerateBitmap.formatBitmap(bitmap, GenerateBitmap.AlignEnum.CENTER));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        else{
+            bitmap = getImageFromRawFolder(activity.getApplicationContext());
+            combBitmap.addBitmap(bitmap);
+        }
+
         //Title
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap(Emv.agentName, 30, GenerateBitmap.AlignEnum.CENTER, true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap(Emv.agentLoc, 20, GenerateBitmap.AlignEnum.CENTER, true, false));
@@ -169,24 +192,23 @@ public class MyPrinter {
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TRANS TYPE: ", Emv.transactionType.toString(), 20, true, false));
 
         if(Emv.transactionType == TransType.TRANSFER){
-            TransferModel model = new TransferModel();
-            combBitmap.addBitmap(GenerateBitmap.str2Bitmap("NAME: ", model.getSendersName(), 20, true, false));
-            String maskedAccountNo = model.getAcctNo().substring(0,3) + "*****" + model.getAcctNo().substring(model.getAcctNo().length()-2);
+            TransferModel transferModel = new TransferModel();
+            combBitmap.addBitmap(GenerateBitmap.str2Bitmap("NAME: ", transferModel.getSendersName(), 20, true, false));
+            String maskedAccountNo = transferModel.getAcctNo().substring(0,3) + "*****" + transferModel.getAcctNo().substring(transferModel.getAcctNo().length()-2);
             combBitmap.addBitmap(GenerateBitmap.str2Bitmap("ACCOUNT NO: ", maskedAccountNo, 20, true, false));
-            combBitmap.addBitmap(GenerateBitmap.str2Bitmap("REF: ", model.getTransferRef(), 20, true, false));
+            combBitmap.addBitmap(GenerateBitmap.str2Bitmap("REF: ", transferModel.getTransferRef(), 20, true, false));
         }else if(Emv.transactionType == TransType.ELECTRICITY){
-            ElectricityModel model = new ElectricityModel();
-            combBitmap.addBitmap(GenerateBitmap.str2Bitmap("NAME: ", model.getCustomerName(), 20, true, false));
-            combBitmap.addBitmap(GenerateBitmap.str2Bitmap("CUSTOMER ID: ", model.getCustomerId(), 20, true, false));
-            combBitmap.addBitmap(GenerateBitmap.str2Bitmap("DISCO: ", model.getBillerName(), 20, true, false));
-            combBitmap.addBitmap(GenerateBitmap.str2Bitmap("REF: ", model.getPaymentRef(), 20, true, false));
+            combBitmap.addBitmap(GenerateBitmap.str2Bitmap("NAME: ", electricityModel.getCustomerName(), 20, true, false));
+            combBitmap.addBitmap(GenerateBitmap.str2Bitmap("CUSTOMER ID: ", electricityModel.getCustomerId(), 20, true, false));
+            combBitmap.addBitmap(GenerateBitmap.str2Bitmap("DISCO: ", electricityModel.getBillerName(), 20, true, false));
+            combBitmap.addBitmap(GenerateBitmap.str2Bitmap("REF: ", electricityModel.getPaymentRef(), 20, true, false));
             combBitmap.addBitmap(GenerateBitmap.str2Bitmap("SERVICE ADDRESS:", 24, GenerateBitmap.AlignEnum.CENTER, true, false));
-            combBitmap.addBitmap(GenerateBitmap.str2Bitmap(model.getAddress(), 24, GenerateBitmap.AlignEnum.CENTER, true, false));
-            if(Emv.responseCode.equals("00") && !model.getToken().isEmpty()) {
+            combBitmap.addBitmap(GenerateBitmap.str2Bitmap(electricityModel.getAddress(), 24, GenerateBitmap.AlignEnum.CENTER, true, false));
+            if(Emv.responseCode.equals("00") && !electricityModel.getToken().isEmpty()) {
                 combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TOKEN:", 28, GenerateBitmap.AlignEnum.CENTER, true, true));
-                combBitmap.addBitmap(GenerateBitmap.str2Bitmap(model.getToken(), 28, GenerateBitmap.AlignEnum.CENTER, true, true));
+                combBitmap.addBitmap(GenerateBitmap.str2Bitmap(electricityModel.getToken(), 28, GenerateBitmap.AlignEnum.CENTER, true, true));
             }
-            combBitmap.addBitmap(GenerateBitmap.str2Bitmap( model.getDescription(), 26, GenerateBitmap.AlignEnum.CENTER,  true, false));
+            combBitmap.addBitmap(GenerateBitmap.str2Bitmap( electricityModel.getDescription(), 26, GenerateBitmap.AlignEnum.CENTER,  true, false));
         }
         if(!Emv.responseCode.equals("00")){
             combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TRANSACTION DECLINED", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
@@ -204,12 +226,16 @@ public class MyPrinter {
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TVR: ", Emv.getEmv("95").toUpperCase(),20,true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TSI: ", Emv.getEmv("9B").toUpperCase(),20,true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap(copy.toUpperCase(), 20, GenerateBitmap.AlignEnum.CENTER, true, false));
+        combBitmap.addBitmap(GenerateBitmap.str2Bitmap("Contact Us: cic@etranzactng.com",20, GenerateBitmap.AlignEnum.CENTER, true,false));
+        combBitmap.addBitmap(GenerateBitmap.str2Bitmap("Center line: 09087989094", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
+        combBitmap.addBitmap(GenerateBitmap.str2Bitmap("WhatsApp: 08188639818", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("--------------------------------------", 32, GenerateBitmap.AlignEnum.CENTER, true, false)); // 打印一行直线
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("Thanks for choosing pocketmoni", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("Pocketmoni V" + Emv.getAppVersion(activity), 20, GenerateBitmap.AlignEnum.CENTER, true, false));
         combBitmap.addBitmap(GenerateBitmap.generateGap(60)); // print row gap
         combBitmap.addBitmap(GenerateBitmap.generateLine(1)); // print one line
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("--X--X--X--X--X--X--X--X--X--X--X--X", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
+
 
         combBitmap.addBitmap(GenerateBitmap.generateGap(60)); // print row gap
         Bitmap bp = combBitmap.getCombBitmap();
@@ -221,8 +247,24 @@ public class MyPrinter {
         //Print Logo
         CombBitmap combBitmap = new CombBitmap();
         Bitmap bitmap;
-        bitmap = getImageFromRawFolder(activity.getApplicationContext());
-        combBitmap.addBitmap(bitmap);
+        if(TransType.valueOf(result[4]) == TransType.ELECTRICITY){
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                String filename = result[19] + ".jpg";
+                File electricityFile = new File(activity.getExternalFilesDir(null).getAbsolutePath() + "/Android/data" + activity.getApplicationContext().getPackageName() + "/ElectricityLogos" + "/" + filename);
+                Log.d("Result", "Here I want to check the path the terminal is displaying " + electricityFile);
+                try {
+                    FileInputStream fileInputStream = new FileInputStream(electricityFile);
+                    bitmap = BitmapFactory.decodeStream(fileInputStream);
+                    combBitmap.addBitmap(GenerateBitmap.formatBitmap(bitmap, GenerateBitmap.AlignEnum.CENTER));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        else{
+            bitmap = getImageFromRawFolder(activity.getApplicationContext());
+            combBitmap.addBitmap(bitmap);
+        }
         //MERCHANT LOCATION
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap(Emv.agentName, 30, GenerateBitmap.AlignEnum.CENTER, true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap(Emv.agentLoc, 20, GenerateBitmap.AlignEnum.CENTER, true, false));
@@ -268,6 +310,9 @@ public class MyPrinter {
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TVR: ", result[10].toUpperCase(),20, true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("TSI: ", result[11].toUpperCase(),20, true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("REPRINT COPY", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
+        combBitmap.addBitmap(GenerateBitmap.str2Bitmap("Contact Us: cic@etranzactng.com",20, GenerateBitmap.AlignEnum.CENTER, true,false));
+        combBitmap.addBitmap(GenerateBitmap.str2Bitmap("Center line: 09087989094", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
+        combBitmap.addBitmap(GenerateBitmap.str2Bitmap("WhatsApp: 08188639818", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("--------------------------------------", 32, GenerateBitmap.AlignEnum.CENTER, true, false)); // 打印一行直线
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("Thanks for choosing pocketmoni", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("Pocketmoni V" + Emv.getAppVersion(activity), 20, GenerateBitmap.AlignEnum.CENTER, true, false));
@@ -317,8 +362,10 @@ public class MyPrinter {
                 combBitmap.addBitmap(GenerateBitmap.str2Bitmap(data, (respCode.equals("00")?"A   ":"F   "), 24, true, false));
             }
             combBitmap.addBitmap(GenerateBitmap.str2Bitmap("--------------------------------------", 32, GenerateBitmap.AlignEnum.CENTER, true, false));
-        }
-        combBitmap.addBitmap(GenerateBitmap.str2Bitmap("Thanks for choosing pocketmoni", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
+        }   combBitmap.addBitmap(GenerateBitmap.str2Bitmap("Contact Us", "cic@etranzactng.com",20, true,false));
+        combBitmap.addBitmap(GenerateBitmap.str2Bitmap("Contact Us: cic@etranzactng.com",20, GenerateBitmap.AlignEnum.CENTER, true,false));
+        combBitmap.addBitmap(GenerateBitmap.str2Bitmap("Center line: 09087989094", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
+        combBitmap.addBitmap(GenerateBitmap.str2Bitmap("Whatsapp: 08188639818", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("Pocketmoni V" + Emv.getAppVersion(activity), 20, GenerateBitmap.AlignEnum.CENTER, true, false));
         combBitmap.addBitmap(GenerateBitmap.generateGap(60)); // print row gap
         combBitmap.addBitmap(GenerateBitmap.generateLine(1)); // print one line

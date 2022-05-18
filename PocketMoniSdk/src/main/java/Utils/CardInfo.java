@@ -178,14 +178,13 @@ public class CardInfo {
     }
 
 
-    private static List<AidClass> NoPseSupport(Context context)
-    {
+    private static List<AidClass> NoPseSupport(Context context) {
         List<AidClass> aidList = new ArrayList<AidClass>();
         String selectAid = "", aidselected = ""; boolean toStep3 = false;
 
         for (AidClass aids : Emv.StoredAids)
         {
-            //setp 5
+            //step 5
             selectAid = PerformCommand("00 A4 04 00 " + Keys.padLeft(Integer.toHexString (aids.Aid.length() / 2), 2, '0') + " " + aids.Aid + " 00", false);
             if (selectAid.equals("6A81")) //Step 2
                 return null;
@@ -205,7 +204,7 @@ public class CardInfo {
                         {
                             String cardLabel = Keys.hexStringToASCII(Emv.getEmv("50"));
                             String hexIndicator = Emv.getEmv("87");
-                            int priority = Integer.parseInt(hexIndicator, 16);
+                            int priority = Integer.parseInt((hexIndicator.isEmpty())? "0":hexIndicator, 16);
                             AidClass aidclass = new AidClass();
                             aidclass.Aid = aidselected; aidclass.PriorityIndicator = priority; aidclass.Name = cardLabel;
                             aidList.add(aidclass);

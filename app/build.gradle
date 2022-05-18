@@ -8,8 +8,8 @@ android {
         minSdkVersion 17
         targetSdkVersion 30
         multiDexEnabled true
-        versionCode 13
-        versionName '0.1.5'
+        versionCode 14
+        versionName '0.1.6'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         android.applicationVariants.all{
             variant ->

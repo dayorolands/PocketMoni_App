@@ -18,6 +18,9 @@ import com.horizonpay.smartpossdk.aidl.printer.AidlPrinterListener;
 import com.horizonpay.smartpossdk.aidl.printer.IAidlPrinter;
 import com.horizonpay.smartpossdk.data.PrinterConst;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Locale;
 
 import Utils.CombBitmap;
@@ -25,6 +28,7 @@ import Utils.Emv;
 import Utils.GenerateBitmap;
 import Utils.Keys;
 import Utils.MyApplication;
+import Utils.TransType;
 
 public class ElectricityReceipt {
 
@@ -113,9 +117,19 @@ public class ElectricityReceipt {
     private static Bitmap printBitmap() {
         //Print Logo
         CombBitmap combBitmap = new CombBitmap();
+        ElectricityModel electricityModel = new ElectricityModel();
+        //Display the logo here
         Bitmap bitmap;
-        bitmap = getImageFromRawFolder(activity.getApplicationContext());
-        combBitmap.addBitmap(bitmap);
+        String filename = electricityModel.getSessionCategory() + ".jpg";
+        File electricityFile = new File(activity.getExternalFilesDir(null).getAbsolutePath() + "/Android/data" + activity.getApplicationContext().getPackageName() + "/ElectricityLogos" + "/" + filename);
+        Log.d("Result", "Here I want to check the path the terminal is displaying " + electricityFile);
+        try {
+            FileInputStream fileInputStream = new FileInputStream(electricityFile);
+            bitmap = BitmapFactory.decodeStream(fileInputStream);
+            combBitmap.addBitmap(GenerateBitmap.formatBitmap(bitmap, GenerateBitmap.AlignEnum.CENTER));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         //Title
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap(Emv.agentName, 30, GenerateBitmap.AlignEnum.CENTER, true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap(Emv.agentLoc, 20, GenerateBitmap.AlignEnum.CENTER, true, false));
@@ -157,6 +171,9 @@ public class ElectricityReceipt {
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("RRN: ", resultRRN, 20,true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("STAN: ", Keys.padLeft(Emv.transactionStan, 6, '0'), 20,true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap(copy.toUpperCase(), 20, GenerateBitmap.AlignEnum.CENTER, true, false));
+        combBitmap.addBitmap(GenerateBitmap.str2Bitmap("Contact Us: cic@etranzactng.com",20, GenerateBitmap.AlignEnum.CENTER, true,false));
+        combBitmap.addBitmap(GenerateBitmap.str2Bitmap("Center line: 09087989094", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
+        combBitmap.addBitmap(GenerateBitmap.str2Bitmap("WhatsApp: 08188639818", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("--------------------------------------", 32, GenerateBitmap.AlignEnum.CENTER, true, false)); // 打印一行直线
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("Thanks for choosing pocketmoni", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("Pocketmoni V" + Emv.getAppVersion(activity), 20, GenerateBitmap.AlignEnum.CENTER, true, false));
@@ -173,8 +190,16 @@ public class ElectricityReceipt {
         //Print Logo
         CombBitmap combBitmap = new CombBitmap();
         Bitmap bitmap;
-        bitmap = getImageFromRawFolder(activity.getApplicationContext());
-        combBitmap.addBitmap(bitmap);
+        String filename = result[19] + ".jpg";
+        File electricityFile = new File(activity.getExternalFilesDir(null).getAbsolutePath() + "/Android/data" + activity.getApplicationContext().getPackageName() + "/ElectricityLogos" + "/" + filename);
+        Log.d("Result", "Here I want to check the path the terminal is displaying " + electricityFile);
+        try {
+            FileInputStream fileInputStream = new FileInputStream(electricityFile);
+            bitmap = BitmapFactory.decodeStream(fileInputStream);
+            combBitmap.addBitmap(GenerateBitmap.formatBitmap(bitmap, GenerateBitmap.AlignEnum.CENTER));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         //MERCHANT LOCATION
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap(Emv.agentName, 30, GenerateBitmap.AlignEnum.CENTER, true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap(Emv.agentLoc, 20, GenerateBitmap.AlignEnum.CENTER, true, false));
@@ -216,6 +241,9 @@ public class ElectricityReceipt {
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("RRN: ", result[8], 20,true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("STAN: ", result[9], 20, true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("REPRINT COPY", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
+        combBitmap.addBitmap(GenerateBitmap.str2Bitmap("Contact Us: cic@etranzactng.com",20, GenerateBitmap.AlignEnum.CENTER, true,false));
+        combBitmap.addBitmap(GenerateBitmap.str2Bitmap("Center line: 09087989094", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
+        combBitmap.addBitmap(GenerateBitmap.str2Bitmap("WhatsApp: 08188639818", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("--------------------------------------", 32, GenerateBitmap.AlignEnum.CENTER, true, false)); // 打印一行直线
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("Thanks for choosing pocketmoni", 20, GenerateBitmap.AlignEnum.CENTER, true, false));
         combBitmap.addBitmap(GenerateBitmap.str2Bitmap("Pocketmoni V" + Emv.getAppVersion(activity), 20, GenerateBitmap.AlignEnum.CENTER, true, false));
@@ -232,20 +260,6 @@ public class ElectricityReceipt {
     private static String copy = "";
     public static void setMerchantOrCustomerCopy(String cpy) {
         copy = cpy;
-    }
-
-    public static Bitmap getImageFromRawFolder(Context context) {
-        Bitmap image = null;
-        try {
-            //InputStream is = context.getResources().openRawResource(R.raw.china_unin);
-            //image = BitmapFactory.decodeStream(is);
-            //is.close();
-            image = BitmapFactory.decodeResource(activity.getResources(), R.mipmap.ic_launcher);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Log.d("getImageFromRawFolder", "Bitmpa =" + image);
-        return image;
     }
 
     public static void ShowToast(String message){

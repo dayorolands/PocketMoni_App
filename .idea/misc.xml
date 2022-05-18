@@ -21,7 +21,15 @@
         <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/COMPRESSED/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/eod_activity.xml" value="0.2246376811594203" />
         <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/COMPRESSED/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/reprint_activity.xml" value="0.182518115942029" />
         <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/COMPRESSED/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/trans_processing_activity.xml" value="0.1" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/PocketMoniSdk/src/main/res/drawable/circle_fail.xml" value="0.103" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/PocketMoniSdk/src/main/res/drawable/circle_pass.xml" value="0.1545" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/PocketMoniSdk/src/main/res/drawable/circle_pending.xml" value="0.1545" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/PocketMoniSdk/src/main/res/drawable/pending.xml" value="0.1545" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/PocketMoniSdk/src/main/res/layout/appselection_custom_list.xml" value="0.25" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/PocketMoniSdk/src/main/res/layout/appselection_dialog.xml" value="0.25" />
         <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/PocketMoniSdk/src/main/res/layout/configure_device_activity.xml" value="0.1" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/PocketMoniSdk/src/main/res/layout/custom_progress_dialog.xml" value="0.16259057971014493" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/drawable/custom_border.xml" value="0.157" />
         <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/drawable/custom_border_amount.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/drawable/ic__x36_3_1_.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/drawable/ic_airtime_icon.xml" value="0.26614583333333336" />
@@ -53,6 +61,7 @@
         <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/discos_selection_dialog.xml" value="0.2368659420289855" />
         <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/dropdown_item.xml" value="0.2368659420289855" />
         <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/electricity_amount_activity.xml" value="0.24592391304347827" />
+        <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/electricity_approved_activity.xml" value="0.1" />
         <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/electricity_card_amount_activity.xml" value="0.264" />
         <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/electricity_card_enterpin_activity.xml" value="0.4" />
         <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/electricity_cash_enterpin_activity.xml" value="0.2368659420289855" />
@@ -74,6 +83,7 @@
         <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/trans_history_activity.xml" value="0.25" />
         <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/trans_processing_activity.xml" value="0.1" />
         <entry key="..\:/Users/ifedayo.adekoya/Documents/POCKETMONI PROJECT/pocketmoni_pos_etranzact_phase_two/app/src/main/res/layout/welcome_activity.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/discos_selection_dialog.xml" value="0.1609375" />
       </map>
     </option>
   </component>

@@ -127,15 +127,15 @@ public class ElectricityModel {
 
     public Plan getPlan(String category,String selectedPlan){
         for(Map.Entry<String,List<Plan>> entry : planDetails.entrySet()){
-            if(entry.getKey().split("\\|")[0].equals(category)){
+            if(entry.getKey().split("\\|")[0].equalsIgnoreCase(category)){
                 for(Plan planType : entry.getValue()){
-                    if(planType.meterType.toLowerCase().equals(selectedPlan.toLowerCase())){
+                    if(planType.meterType.toLowerCase().equalsIgnoreCase(selectedPlan.toLowerCase())){
                         return planType;
                     }
                 }
             }
         }
-        //Index 0 for prepaid and Index 1 for prepaid
+        //Index 0 for prepaid and Index 1 for postpaid
         return new Plan("","","","","","","", "" );
     }
 

@@ -257,6 +257,7 @@ public class ElectricityCardAmountActivity extends AppCompatActivity implements 
                 loadingDialog.dismiss();
             }
         });
+
     }
 
     Runnable doInsertCardLogic = new Runnable() {

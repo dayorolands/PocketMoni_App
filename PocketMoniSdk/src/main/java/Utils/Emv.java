@@ -274,7 +274,7 @@ public class Emv {
                 return;
             }
             posHandlerListener.onPinVerificationResult(false,Integer.parseInt(pintryCount, 16) + " PIN TRIAL REMAINING");
-            Log.d( "Result", "PIN TRY COUNT " + Integer.parseInt(pintryCount, 16));
+            Log.d( "Result", "PIN TRY COUNT: " + Integer.parseInt(pintryCount, 16));
             //if (Emv.cvmResult.length() == 4) Emv.setEmv("9F34", Emv.cvmResult + "01");
             //Emv.TVR = Keys.setBits(Emv.TVR, 3, 8);
             return;
@@ -1512,9 +1512,9 @@ public class Emv {
             terminalId = SharedPref.get(activity, "terminalid", "");
             merchantId = SharedPref.get(activity, "merchantid", "");
             ///Todo remember to change to production url
-            //String baseUrl = "https://demo.etranzact.com";
+            String baseUrl = "https://demo.etranzact.com";
             //String baseUrl = "https://www.etranzact.net";
-            String baseUrl = SharedPref.get(activity, "baseurl", "https://www.etranzact.net");
+            //String baseUrl = SharedPref.get(activity, "baseurl", "https://www.etranzact.net");
             transUrl = baseUrl + "/tms-service/tms/transact";
             acctValidationUrl = baseUrl + "/tms-service/tms/account-validation";
             electricityCategoryUrl = baseUrl + "/tms-service/tms/bill/electricity/getCategories?serialNo="+serialNumber+"&terminalId="+terminalId+"";

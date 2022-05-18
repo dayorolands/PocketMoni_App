@@ -2,6 +2,7 @@ package com.etranzact.pocketmoni.View.Electricity.Cash;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -21,6 +22,7 @@ import com.etranzact.pocketmoni.Dialogs.LoadingProgressDialog;
 import com.etranzact.pocketmoni.Model.ElectricityModel;
 import com.etranzact.pocketmoni.R;
 
+import java.io.File;
 import java.text.DecimalFormat;
 import java.util.Locale;
 
@@ -138,7 +140,7 @@ public class ElectricityCashAmountActivity extends AppCompatActivity implements 
             return;
         }
 
-        //Get card transaction amount
+        //Get transaction amount
         double originalAmount = Double.parseDouble(amt);
         String amtF = String.valueOf(originalAmount * 100);
         DecimalFormat df = new DecimalFormat("###.#");
@@ -160,7 +162,6 @@ public class ElectricityCashAmountActivity extends AppCompatActivity implements 
                 String reference = Keys.parseJson(response,"reference");
                 String customerName = Keys.parseJson(response,"customerName");
                 String address = Keys.parseJson(response,"address");
-                Log.d("Result:", "The customer address is " + address);
                 model.setPaymentRef(reference);
                 model.setCustomerName(customerName);
                 model.setAddress(address);
